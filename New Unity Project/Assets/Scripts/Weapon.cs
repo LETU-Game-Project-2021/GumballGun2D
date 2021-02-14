@@ -64,7 +64,7 @@ public class Weapon: MonoBehaviour
             //increase stuck value and meter
             if(currentMod.spray) {
                 for(int i = 0; i < currentMod.shots; i++) {
-                    //launch(firePoint.rotation but offset randomly +- 25 degrees);
+                    launch();
                 }
             }
             else if(currentMod.burst) {
@@ -84,7 +84,13 @@ public class Weapon: MonoBehaviour
 
     public void launch(Quaternion rotation) {
         GameObject gumball = Instantiate(Resources.Load("Gumball"), firePoint.position, rotation) as GameObject;
-        //Apply velocity, scale, damage, gravity, splash
+        gumball.transform.localScale *= currentMod.scale;
+        Gumball g = gumball.GetComponent<Gumball>();
+        g.spray(currentMod.spray);
+        g.setVelocity(currentMod.velocity);
+        g.setDamage(currentMod.damage);
+        g.setSplash(currentMod.splash);
+        g.setGravity(currentMod.gravity);
     }
 
     //overwrite currentMod as preset
