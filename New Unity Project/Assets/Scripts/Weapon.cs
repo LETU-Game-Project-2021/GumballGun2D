@@ -223,8 +223,8 @@ public class Weapon: MonoBehaviour
     //called externally to adjust currentMod temporarily
     public void upgrade(string attribute, dynamic value, float duration) {
         dynamic original = getAttribute(currentMod, attribute);
-        alterMod(attribute, value, false);
-        StartCoroutine(upgradeTimer(attribute, original, duration));
+        //alterMod(attribute, value, false);
+       // StartCoroutine(upgradeTimer(attribute, original, duration));
     }
 
     //fire multiple shots with one input
@@ -241,14 +241,14 @@ public class Weapon: MonoBehaviour
     }
 
     //waits for given time and reverts mod to previous attribute state
-    IEnumerator upgradeTimer(string attribute, dynamic original, float duration) {
-        float startTime = Time.time;
-        while(Time.time - startTime < duration) {
-            //update upgrade timer hud
-            yield return 0;
-        }
-        alterMod(attribute, original, false);
-    }
+    //IEnumerator upgradeTimer(string attribute, dynamic original, float duration) {
+    //    float startTime = Time.time;
+    //    while(Time.time - startTime < duration) {
+    //        //update upgrade timer hud
+    //        yield return 0;
+    //    }
+    //    //alterMod(attribute, original, false);
+    //}
 }
 
 class gunMod
