@@ -8,11 +8,12 @@ public class Weapon: MonoBehaviour
     public Rigidbody2D player;
     public Transform firePoint;
 
-    private gunMod currentMod, permanentMods;
+    public gunMod currentMod, permanentMods;
+
     private Rigidbody2D rb;
     private Dictionary<string, gunMod> modList;
     private float timeSinceFired = 0;
-    private float burstDelay = 0.1f;
+    private float burstDelay = 0.04f;
     private Vector2 playerPos, mousePos;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Weapon: MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         createMods();
         permanentMods = new gunMod(1, 1, 1, 1, 1, 0, false, false, false, false, false);
+        currentMod = new gunMod(20, 1, 10, 1, .5f, 1, false, false, false, false, false);
         applyMod("default");
     }
 
@@ -27,6 +29,7 @@ public class Weapon: MonoBehaviour
     void Update() {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         playerPos = player.position;
+        timeSinceFired += Time.deltaTime;
         //reduce stuck value and meter
         if(currentMod.automatic) {
             if(Input.GetButton("Fire1")) {
@@ -50,12 +53,13 @@ public class Weapon: MonoBehaviour
 
     //define a set of pre-made gun modifications
     private void createMods() {
-        modList.Add("default", new gunMod(20, 1, 10, 1, .5f, 1, false, false, false, false, false));
-        modList.Add("machinegun", new gunMod(20, .7f, 100, .9f, .1f, 1, true, false, false, false, false));
+        modList = new Dictionary<string, gunMod>();
+        modList.Add("default", new gunMod(20, 1, 10, 1, 2, 1, false, false, false, false, false));
+        modList.Add("machinegun", new gunMod(20, .7f, 100, .9f, 10, 1, true, false, false, false, false));
         modList.Add("shotgun", new gunMod(18, 1, 5, 1.2f, 1, 8, false, true, false, false, false));
-        modList.Add("burst", new gunMod(20, .9f, 7, .9f, .5f, 5, false, false, true, false, false));
-        modList.Add("heavy", new gunMod(6, 5, 3, 3, 3, 1, false, false, false, true, true));
-        modList.Add("ultimate", new gunMod(25, 3, 250, .8f, .01f, 1, true, true, false, false, false));
+        modList.Add("burst", new gunMod(20, .9f, 7, .9f, 2, 5, false, false, true, false, false));
+        modList.Add("heavy", new gunMod(6, 5, 3, 3, .3f, 1, false, false, false, true, true));
+        modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 1, true, true, false, false, false));
     }
 
     //main function to call
@@ -86,11 +90,11 @@ public class Weapon: MonoBehaviour
         GameObject gumball = Instantiate(Resources.Load("Gumball"), firePoint.position, rotation) as GameObject;
         gumball.transform.localScale *= currentMod.scale;
         Gumball g = gumball.GetComponent<Gumball>();
-        g.spray(currentMod.spray);
         g.setVelocity(currentMod.velocity);
         g.setDamage(currentMod.damage);
         g.setSplash(currentMod.splash);
         g.setGravity(currentMod.gravity);
+        g.spray(currentMod.spray);
     }
 
     //overwrite currentMod as preset
@@ -100,7 +104,7 @@ public class Weapon: MonoBehaviour
             currentMod.damage = modList[mod].damage * permanentMods.damage;
             currentMod.stuckLimit = modList[mod].stuckLimit * permanentMods.stuckLimit;
             currentMod.scale = modList[mod].scale * permanentMods.scale;
-            currentMod.rate = modList[mod].rate * permanentMods.rate;
+            currentMod.rate = 1 / (modList[mod].rate * permanentMods.rate);
             currentMod.shots = modList[mod].shots + permanentMods.shots;
             currentMod.automatic = modList[mod].automatic || permanentMods.automatic;
             currentMod.spray = modList[mod].spray || permanentMods.spray;
@@ -251,7 +255,7 @@ public class Weapon: MonoBehaviour
     }
 }
 
-class gunMod
+public class gunMod
 {
     /* GUIDE
      * velocity     how fast the gumball moves

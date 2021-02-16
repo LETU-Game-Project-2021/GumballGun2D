@@ -6,7 +6,7 @@ public class Gumball : MonoBehaviour
 {
     public float sprayRotationLimit = 25;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private float velocity, damage;
     private bool splash, gravity;
@@ -14,7 +14,6 @@ public class Gumball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,7 +25,7 @@ public class Gumball : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag != "Player"/* && collision.tag != "Gum"*/) {
+        if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon") {
             Destroy(this.gameObject);
         }
         if(collision.tag == "Enemy") {
