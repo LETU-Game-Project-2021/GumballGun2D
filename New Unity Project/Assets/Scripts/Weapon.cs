@@ -48,7 +48,7 @@ public class Weapon: MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         //the following float values may need adjustment
-        transform.position = new Vector2(playerPos.x + .4f, playerPos.y - .2f);
+        transform.position = new Vector2(playerPos.x + .6f, playerPos.y - .35f);
     }
 
     //define a set of pre-made gun modifications
@@ -59,7 +59,7 @@ public class Weapon: MonoBehaviour
         modList.Add("shotgun", new gunMod(18, 1, 5, 1.2f, 1, 8, false, true, false, false, false));
         modList.Add("burst", new gunMod(20, .9f, 7, .9f, 2, 5, false, false, true, false, false));
         modList.Add("heavy", new gunMod(6, 5, 3, 3, .3f, 1, false, false, false, true, true));
-        modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 1, true, true, false, false, false));
+        modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 5, true, true, false, false, false));
     }
 
     //main function to call

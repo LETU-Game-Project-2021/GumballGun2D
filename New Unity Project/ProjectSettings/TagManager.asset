@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gum
   - Weapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
