@@ -36,7 +36,8 @@ public class Gumball : MonoBehaviour
             Destroy(gameObject);
         }
         if(collision.tag == "Enemy") {
-            collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            //collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            collision.GetComponent<Enemy>().Damage();
             //set speed of "Spider" to 0
             //create splat
         }
