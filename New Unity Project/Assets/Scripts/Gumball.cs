@@ -11,9 +11,12 @@ public class Gumball : MonoBehaviour
     private float velocity, damage;
     private bool splash, gravity;
 
+    private float timeToLive;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeToLive = 4;
     }
 
     // Update is called once per frame
@@ -22,11 +25,15 @@ public class Gumball : MonoBehaviour
         if(gravity) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y-Physics2D.gravity.magnitude * Time.deltaTime);
         }
+        timeToLive -= Time.deltaTime;
+        if(timeToLive < 0) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon") {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         if(collision.tag == "Enemy") {
             collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
