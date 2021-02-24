@@ -283,19 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eHealth: 0
   enemyType: 0
-<<<<<<< Updated upstream
   speed: 0
   stuck: 0
   fly: 0
-=======
-<<<<<<< HEAD
-  stuck: 0
-=======
-  speed: 0
-  stuck: 0
-  fly: 0
->>>>>>> d696a08e59fed6e2d93d580c76980e9efaec8441
->>>>>>> Stashed changes
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +383,7 @@ GameObject:
   - component: {fileID: 1105798571}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -858,21 +848,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eHealth: 0
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-  enemyType: 0
-  stuck: 0
-=======
->>>>>>> Stashed changes
   enemyType: 2
   speed: 0
   stuck: 0
   fly: 0
-<<<<<<< Updated upstream
-=======
->>>>>>> d696a08e59fed6e2d93d580c76980e9efaec8441
->>>>>>> Stashed changes
 --- !u!1 &1731739853
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +866,7 @@ GameObject:
   - component: {fileID: 1731739857}
   m_Layer: 0
   m_Name: GumballGun
-  m_TagString: Untagged
+  m_TagString: Gum
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1090,21 +1069,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eHealth: 0
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-  enemyType: 0
-  stuck: 0
-=======
->>>>>>> Stashed changes
   enemyType: 1
   speed: 0
   stuck: 0
   fly: 0
-<<<<<<< Updated upstream
-=======
->>>>>>> d696a08e59fed6e2d93d580c76980e9efaec8441
->>>>>>> Stashed changes
 --- !u!212 &1738786142
 SpriteRenderer:
   m_ObjectHideFlags: 0
