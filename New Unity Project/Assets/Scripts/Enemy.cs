@@ -6,12 +6,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public int eHealth;
     [SerializeField] public int enemyType;
-    [SerializeField] public int speed;
+    [SerializeField] public float speed;
 
     public bool stuck = false;
     public bool fly = false;
+    public GameObject target;
+    public bool splat = false;
+    public float timeStuck;
+    public float timeDestroy; 
 
-    // Start is called before the first frame update
     void Start()
     {
         switch (enemyType) {
@@ -32,7 +35,13 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        if (stuck) {
+            timeStuck += Time.deltaTime;
+            if (timeStuck > timeDestroy) {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     public void Damage() {
@@ -45,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     public void Stuck() {
         speed = 0;
-        this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         this.gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
     }
 }
