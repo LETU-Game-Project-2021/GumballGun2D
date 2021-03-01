@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gumball : MonoBehaviour
 {
     public float sprayRotationLimit = 25;
+    public float splashCount = 15;
 
     public Rigidbody2D rb;
 
@@ -33,6 +34,10 @@ public class Gumball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon") {
+            if(splash) {
+                createSplash(transform.position);
+            }
+
             Destroy(gameObject);
         }
         if(collision.tag == "Enemy") {
@@ -65,4 +70,28 @@ public class Gumball : MonoBehaviour
     public void setGravity(bool g) {
         gravity = g;
     }
+
+    //generate gumballs as splash effect
+    private void createSplash(Vector3 location) {
+        for(int i = 0; i < splashCount; i++) {
+            Quaternion rotation = Quaternion.Euler(0,0,360/splashCount*i);
+            GameObject ball = Instantiate(Resources.Load("Gumball"), location, rotation) as GameObject;
+            Gumball g = ball.GetComponent<Gumball>();
+            g.setVelocity(3);
+            g.setDamage(.5f);
+            g.setSplash(false);
+            g.setGravity(true);
+            g.spray(false);
+        }
+    }
 }
+/*
+GameObject gumball = Instantiate(Resources.Load("Gumball"), firePoint.position, rotation) as GameObject;
+gumball.transform.localScale *= currentMod.scale;
+Gumball g = gumball.GetComponent<Gumball>();
+        g.setVelocity(currentMod.velocity);
+        g.setDamage(currentMod.damage);
+        g.setSplash(currentMod.splash);
+        g.setGravity(currentMod.gravity);
+        g.spray(currentMod.spray);
+*/

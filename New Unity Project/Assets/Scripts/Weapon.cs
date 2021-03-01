@@ -46,9 +46,14 @@ public class Weapon: MonoBehaviour
     private void FixedUpdate() {
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        if(this.GetComponentInParent<Player>().transform.localScale.x < 0) {
+            //angle += 180;
+            //transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, -1, 1));
+        }
         rb.rotation = angle;
-        //the following float values may need adjustment
-        transform.position = new Vector2(playerPos.x + .6f, playerPos.y - .35f);
+        transform.localPosition = new Vector2(0.127f, -0.033f);
+        //firePoint.transform.localPosition = Vector3.Scale(firePoint.transform.localPosition, new Vector3(-1, 1, 1));
+        
     }
 
     //define a set of pre-made gun modifications
@@ -58,7 +63,7 @@ public class Weapon: MonoBehaviour
         modList.Add("machinegun", new gunMod(20, .7f, 100, .9f, 10, 1, true, false, false, false, false));
         modList.Add("shotgun", new gunMod(18, 1, 5, 1.2f, 1, 8, false, true, false, false, false));
         modList.Add("burst", new gunMod(20, .9f, 7, .9f, 2, 5, false, false, true, false, false));
-        modList.Add("heavy", new gunMod(6, 5, 3, 3, .3f, 1, false, false, false, true, true));
+        modList.Add("heavy", new gunMod(8, 5, 3, 3, .3f, 1, false, false, false, true, true));
         modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 5, true, true, false, false, false));
     }
 

@@ -89,5 +89,8 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+
+        //Correct the rotation of the gun
+        this.GetComponentInChildren<Weapon>().transform.localScale = Vector3.Scale(this.GetComponentInChildren<Weapon>().transform.localScale, new Vector3(-1, -1, 1));
     }
 }
