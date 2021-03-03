@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1137297023}
-  shiftTime: 1
+  shiftTime: 0.2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 1269837792}
   - component: {fileID: 1269837791}
   m_Layer: 0
-  m_Name: GumballGun
+  m_Name: Nest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
