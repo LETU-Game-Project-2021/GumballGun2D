@@ -20,11 +20,28 @@ public class Player : MonoBehaviour
             jump = true;
 
         }
+
+        if(Input.GetButtonDown("Use"))
+        {
+
+            playerUse();
+
+        }
     }
 
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
+    }
+
+    private void playerUse() {
+        //check dedicated collider for nearby nest (prioritized) or gumball machine
+        //if nest {
+        //      use drill (instantiate drill, start timer, disable and retexture nest
+        //}
+        //else if machine {
+        //      interact (UI?)
+        //}
     }
 }

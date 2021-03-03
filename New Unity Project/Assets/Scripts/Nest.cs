@@ -7,12 +7,13 @@ public class Nest : MonoBehaviour
     public float spawnRate = 5;
     public GameObject enemy;
     private float lastSpawn = 0f;
+    private bool destroyed = false;
 
     private void Update()
     {
         lastSpawn += Time.deltaTime;
 
-        if (lastSpawn > spawnRate)
+        if (!destroyed && lastSpawn > spawnRate)
         {
 
             lastSpawn = 0f;
@@ -26,5 +27,9 @@ public class Nest : MonoBehaviour
 
         Instantiate(enemy, transform.position, Quaternion.identity);
 
+    }
+
+    public void destroy() {
+        destroyed = true;
     }
 }
