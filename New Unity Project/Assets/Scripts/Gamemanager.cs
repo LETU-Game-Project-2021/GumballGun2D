@@ -14,7 +14,7 @@ public class Gamemanager : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("t")) {
             SceneManager.LoadScene("SampleScene");
         }
     }
