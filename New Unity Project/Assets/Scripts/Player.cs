@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     public bool drill = false;
+    public bool upgrade = false;
     public GameObject nest;
     public GameObject drillObject;
+    public Upgrader upgrader;
     public int avalibleDrills = 1;
 
     // Update is called once per frame
@@ -40,10 +42,13 @@ public class Player : MonoBehaviour
 
     private void playerUse() {
 
-        if (drill && avalibleDrills > 0) {
+        if(drill && avalibleDrills > 0) {
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
             avalibleDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
+        }
+        else if(upgrade/* && sufficient coins*/) {
+            upgrader.getEnhancement();
         }
         //else if machine {
         //      interact (UI?)

@@ -40,10 +40,6 @@ public class Nest : MonoBehaviour
 
     }
 
-    public void destroy() {
-        destroyed = true;
-    }
-
     public void startDrill() {
 
         currentDrill = true;
