@@ -33,7 +33,7 @@ public class Gumball : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon") {
+        if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon" && collision.tag != "StationaryUsable") {
             if(splash) {
                 createSplash(transform.position);
             }
