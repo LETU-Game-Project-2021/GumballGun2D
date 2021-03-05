@@ -303,6 +303,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4282145018873429065}
   runSpeed: 40
+  drill: 0
+  nest: {fileID: 0}
+  drillObject: {fileID: 5318918353578580494, guid: 2d8e004ff541ff4489b1b89ded281ac3,
+    type: 3}
 --- !u!50 &4282145018873429069
 Rigidbody2D:
   serializedVersion: 4

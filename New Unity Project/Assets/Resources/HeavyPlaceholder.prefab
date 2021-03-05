@@ -102,7 +102,7 @@ MonoBehaviour:
   speed: 5
   stuck: 0
   fly: 0
-  target: {fileID: 4282145018873429062, guid: 89fa3bed5c4800046b3e57acb587d77e, type: 3}
+  target: {fileID: 697746824954844854, guid: a76640b3509b38d429f8dc3936f2a3a2, type: 3}
   splat: 0
   timeStuck: 0
   timeDestroy: 10
