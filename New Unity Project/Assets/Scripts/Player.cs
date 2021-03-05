@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
+    public bool drill = false;
+    public GameObject nest;
+    public GameObject drillObject;
+    public int avalibleDrills = 1;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +27,6 @@ public class Player : MonoBehaviour
 
         if(Input.GetButtonDown("Use"))
         {
-
             playerUse();
 
         }
@@ -36,10 +39,12 @@ public class Player : MonoBehaviour
     }
 
     private void playerUse() {
-        //check dedicated collider for nearby nest (prioritized) or gumball machine
-        //if nest {
-        //      use drill (instantiate drill, start timer, disable and retexture nest
-        //}
+
+        if (drill && avalibleDrills > 0) {
+            Instantiate(drillObject, nest.transform.position, Quaternion.identity);
+            avalibleDrills--;
+            nest.gameObject.GetComponent<Nest>().startDrill();
+        }
         //else if machine {
         //      interact (UI?)
         //}
