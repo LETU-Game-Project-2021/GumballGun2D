@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
             avalibleDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
-        }
+        } 
         else if(upgrade/* && sufficient coins*/) {
             upgrader.getEnhancement();
         }

@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class Gamemanager : MonoBehaviour
 {
 
-    // Update is called once per frame
+    public int totalNests = 0;
+    public int nestsDestroyed = 0;
+    public bool roomComplete = false;
+
     void Update()
     {
         if (Input.GetKeyDown("escape")) {
@@ -15,7 +18,21 @@ public class Gamemanager : MonoBehaviour
         }
 
         if (Input.GetKeyDown("t")) {
+            nestsDestroyed = 0;
+            totalNests = 0;
             SceneManager.LoadScene("SampleScene");
         }
+
+        if (totalNests <= nestsDestroyed && !roomComplete) {
+            roomComplete = true;
+            completeRoom();
+        }
+    }
+
+    public void completeRoom() {
+        //stop waves and move to the next room
+        nestsDestroyed = 0;
+        totalNests = 0;
+        Debug.Log("Nests Destroyed!");
     }
 }

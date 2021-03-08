@@ -6,11 +6,17 @@ public class Nest : MonoBehaviour
 {
     public float spawnRate = 5;
     public GameObject enemy;
+    public GameObject gameManger;
     public bool currentDrill = false;
     private float lastSpawn = 0f;
     private bool destroyed = false;
     private float timeSinceDrill;
     public float drillTime;
+
+    private void Start()
+    {
+        gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;
+    }
 
     private void Update()
     {
@@ -26,8 +32,9 @@ public class Nest : MonoBehaviour
 
         if (currentDrill) {
             timeSinceDrill += Time.deltaTime;
-            if (timeSinceDrill > drillTime) {
+            if (timeSinceDrill > drillTime && !destroyed) {
                 destroyed = true;
+                gameManger.gameObject.GetComponent<Gamemanager>().nestsDestroyed++;
                 this.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
             }
         }
@@ -51,7 +58,12 @@ public class Nest : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().drill = true;
+            if (!destroyed)
+            {
+                collision.gameObject.GetComponent<Player>().drill = true;
+            }
+
+            
             collision.gameObject.GetComponent<Player>().nest = this.gameObject;
         }
     }
