@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             nest.gameObject.GetComponent<Nest>().startDrill();
         } 
         else if(upgrade/* && sufficient coins*/) {
-            upgrader.getEnhancement();
+            upgrader.getTemporaryEnhancement();
         }
         //else if machine {
         //      interact (UI?)
