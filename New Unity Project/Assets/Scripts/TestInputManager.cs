@@ -9,7 +9,7 @@ public class TestInputManager : MonoBehaviour
     void Start()
     {
         gun = GameObject.Find("GumballGun").GetComponent<Weapon>();
-        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy");
+        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash");
     }
 
     // Update is called once per frame
@@ -38,6 +38,10 @@ public class TestInputManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha6)) {
             Debug.Log("Heavy");
             gun.applyMod("heavy");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha7)) {
+            Debug.Log("Splash");
+            gun.alterMod("splash", true, true);
         }
     }
 }
