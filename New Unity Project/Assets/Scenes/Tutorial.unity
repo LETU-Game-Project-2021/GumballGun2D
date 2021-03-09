@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4736991046880407018, guid: 019c99da95eaea54096987248cafe5d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: StationaryUsable
+      objectReference: {fileID: 0}
     - target: {fileID: 4736991046880407019, guid: 019c99da95eaea54096987248cafe5d3,
         type: 3}
       propertyPath: gameManger
@@ -860,6 +865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Nest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736991046880407018, guid: 019c99da95eaea54096987248cafe5d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: StationaryUsable
       objectReference: {fileID: 0}
     - target: {fileID: 4736991046880407019, guid: 019c99da95eaea54096987248cafe5d3,
         type: 3}
@@ -2001,6 +2011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MCPlaceholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282145018873429065, guid: 89fa3bed5c4800046b3e57acb587d77e,
+        type: 3}
+      propertyPath: m_JetForce
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4282145018873429067, guid: 89fa3bed5c4800046b3e57acb587d77e,
         type: 3}
