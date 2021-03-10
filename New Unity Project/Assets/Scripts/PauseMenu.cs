@@ -38,11 +38,6 @@ public class PauseMenu : MonoBehaviour
 		GameIsPaused = true;
 	}
 	
-	public void LoadSettings()
-	{
-		Debug.Log("Settings");
-	}
-	
 	public void MenuReturn()
 	{
 		pauseMenuUI.SetActive(false);
