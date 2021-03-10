@@ -8,12 +8,16 @@ public class Player : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
+    bool fly = false;
     public bool drill = false;
     public bool upgrade = false;
     public GameObject nest;
     public GameObject drillObject;
     public Upgrader upgrader;
     public int avalibleDrills = 1;
+    public bool doubleJump = false;
+    public int extraJumps = 0;
+    public bool jetpack = false;
 
     // Update is called once per frame
     void Update()
@@ -21,10 +25,15 @@ public class Player : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         if (Input.GetButtonDown("Jump"))
+        //if (Input.GetButton("Jump"))
         {
 
             jump = true;
 
+        }
+
+        if(Input.GetButton("Jump")) {
+            fly = true;
         }
 
         if(Input.GetButtonDown("Use"))
@@ -36,8 +45,9 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, jump, fly, jetpack);
         jump = false;
+        fly = false;
     }
 
     private void playerUse() {
@@ -46,9 +56,9 @@ public class Player : MonoBehaviour
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
             avalibleDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
-        }
+        } 
         else if(upgrade/* && sufficient coins*/) {
-            upgrader.getEnhancement();
+            upgrader.getTemporaryEnhancement();
         }
         //else if machine {
         //      interact (UI?)

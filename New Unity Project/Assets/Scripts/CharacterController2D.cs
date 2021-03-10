@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
+    [SerializeField] private float m_JetForce = 5f;                             // Amount of force added while using the jetpack
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -51,7 +52,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool jump)
+    public void Move(float move, bool jump, bool fly, bool jetpack)
     {
             // Move the character by finding the target velocity
             Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
@@ -76,6 +77,9 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+        }
+        if(jetpack && fly) {
+            m_Rigidbody2D.AddForce(new Vector2(0f, m_JetForce), ForceMode2D.Force);
         }
     }
 

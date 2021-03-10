@@ -5,11 +5,16 @@ using UnityEngine;
 public class TestInputManager : MonoBehaviour
 {
     Weapon gun;
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
         gun = GameObject.Find("GumballGun").GetComponent<Weapon>();
-        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy");
+        player = GameObject.FindObjectOfType<Player>();
+        if(!player) {
+            Debug.Log("Could not find player");
+        }
+        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash, 8.Jetpack");
     }
 
     // Update is called once per frame
@@ -38,6 +43,15 @@ public class TestInputManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha6)) {
             Debug.Log("Heavy");
             gun.applyMod("heavy");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha7)) {
+            Debug.Log("Splash");
+            gun.alterMod("splash", true, true);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha8)) {
+            bool temp = !player.jetpack;
+            Debug.Log("Jetpack = " + temp);
+            player.jetpack = temp;
         }
     }
 }
