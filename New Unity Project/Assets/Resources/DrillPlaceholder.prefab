@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4127516494713495602}
   - component: {fileID: 7650300905592776770}
+  - component: {fileID: 7725104931347596888}
   m_Layer: 0
   m_Name: DrillPlaceholder
   m_TagString: Untagged
@@ -81,3 +82,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7725104931347596888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318918353578580494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836504c9cb7eb974f842374c76f0d7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

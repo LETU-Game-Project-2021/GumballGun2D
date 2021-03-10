@@ -9,7 +9,7 @@ public class Nest : MonoBehaviour
     public GameObject gameManger;
     public bool currentDrill = false;
     private float lastSpawn = 0f;
-    private bool destroyed = false;
+    public bool destroyed = false;
     private float timeSinceDrill;
     public float drillTime;
 
