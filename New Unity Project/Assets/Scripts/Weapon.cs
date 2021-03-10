@@ -148,28 +148,37 @@ public class Weapon: MonoBehaviour
 
     //adjust individual attributes of currentMod
     public void alterMod(string attribute, float value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         switch(attribute) {
             case "velocity":
                 reference.velocity = value;
+                if(permanent) {
+                    permanentMods.velocity = value;
+                }
                 break;
             case "damage":
                 reference.damage = value;
+                if(permanent) {
+                    permanentMods.damage = value;
+                }
                 break;
             case "stuckLimit":
                 reference.stuckLimit = value;
+                if(permanent) {
+                    permanentMods.stuckLimit = value;
+                }
                 break;
             case "scale":
                 reference.scale = value;
+                if(permanent) {
+                    permanentMods.scale = value;
+                }
                 break;
             case "rate":
                 reference.rate = value;
+                if(permanent) {
+                    permanentMods.rate = value;
+                }
                 break;
             default:
                 Debug.LogError("Invalid attribute: " + attribute + "=" + value);
@@ -178,15 +187,12 @@ public class Weapon: MonoBehaviour
     }
 
     public void alterMod(string attribute, int value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         if(attribute == "shots") {
             reference.shots = value;
+            if(permanent) {
+                permanentMods.shots = value;
+            }
         }
         else {
             alterMod(attribute, (float)value, permanent);
@@ -194,28 +200,37 @@ public class Weapon: MonoBehaviour
     }
 
     public void alterMod(string attribute, bool value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         switch(attribute) {
             case "automatic":
                 reference.automatic = value;
+                if(permanent) {
+                    permanentMods.automatic = value;
+                }
                 break;
             case "spray":
                 reference.spray = value;
+                if(permanent) {
+                    permanentMods.spray = value;
+                }
                 break;
             case "burst":
                 reference.burst = value;
+                if(permanent) {
+                    permanentMods.burst = value;
+                }
                 break;
             case "splash":
                 reference.splash = value;
+                if(permanent) {
+                    permanentMods.splash = value;
+                }
                 break;
             case "gravity":
                 reference.gravity = value;
+                if(permanent) {
+                    permanentMods.gravity = value;
+                }
                 break;
             default:
                 Debug.LogError("Invalid attribute: " + attribute + "=" + value);

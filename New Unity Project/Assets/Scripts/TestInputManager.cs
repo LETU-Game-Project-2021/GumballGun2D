@@ -14,7 +14,7 @@ public class TestInputManager : MonoBehaviour
         if(!player) {
             Debug.Log("Could not find player");
         }
-        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash, 8.Jetpack");
+        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash, 8.Jetpack, 9.Gravity");
     }
 
     // Update is called once per frame
@@ -52,6 +52,11 @@ public class TestInputManager : MonoBehaviour
             bool temp = !player.jetpack;
             Debug.Log("Jetpack = " + temp);
             player.jetpack = temp;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha9)) {
+            bool temp = !gun.currentMod.gravity;
+            Debug.Log("Gravity = " + temp);
+            gun.alterMod("gravity", temp, true);
         }
     }
 }
