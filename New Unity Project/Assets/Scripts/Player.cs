@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public bool doubleJump = false;
     public int extraJumps = 0;
     public bool jetpack = false;
+    public bool drillPickup = false;
+    public bool destroyDrill = false;
 
     // Update is called once per frame
     void Update()
@@ -52,13 +54,21 @@ public class Player : MonoBehaviour
 
     private void playerUse() {
 
-        if(drill && avalibleDrills > 0) {
+        if (drill && avalibleDrills > 0)
+        {
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
             avalibleDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
-        } 
-        else if(upgrade/* && sufficient coins*/) {
+        }
+        else if (upgrade/* && sufficient coins*/)
+        {
             upgrader.getTemporaryEnhancement();
+        }
+        else if (drillPickup) {
+            destroyDrill = true;
+            avalibleDrills++;
+            drillPickup = false;
+            destroyDrill = false;
         }
         //else if machine {
         //      interact (UI?)
