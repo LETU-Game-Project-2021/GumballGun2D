@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public bool stuck = false;
     public bool fly = false;
     public GameObject target;
+    private GameObject pTarget;
     public bool splat = false;
     public float timeStuck;
     public float timeDestroy;
@@ -103,4 +104,20 @@ public class Enemy : MonoBehaviour
         transform.localScale = theScale;
 
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player") {
+    //        pTarget = target;
+    //        target = collision.gameObject;
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        target = pTarget;
+    //    }
+    //}
 }
