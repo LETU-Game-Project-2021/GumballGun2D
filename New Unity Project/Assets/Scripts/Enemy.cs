@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+
         if (stuck) {
             timeStuck += Time.deltaTime;
             if (timeStuck > timeDestroy) {
@@ -54,7 +55,7 @@ public class Enemy : MonoBehaviour
 
     public void Stuck() {
         speed = 0;
-        this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
         this.gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
     }
 }
