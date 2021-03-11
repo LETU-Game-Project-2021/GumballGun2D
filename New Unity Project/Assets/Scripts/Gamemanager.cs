@@ -9,6 +9,14 @@ public class Gamemanager : MonoBehaviour
     public int totalNests = 0;
     public int nestsDestroyed = 0;
     public bool roomComplete = false;
+    public GameObject portalLocation;
+    public GameObject portal;
+
+    private void Start()
+    {
+        portalLocation = this.gameObject.GetComponentInChildren<CapsuleCollider2D>().gameObject;
+        portal = this.gameObject.GetComponentInChildren<Portal>().gameObject;
+    }
 
     void Update()
     {
@@ -26,6 +34,10 @@ public class Gamemanager : MonoBehaviour
         if (totalNests <= nestsDestroyed && !roomComplete) {
             roomComplete = true;
             completeRoom();
+        }
+
+        if (portal.GetComponent<Portal>().gameOver) {
+            Debug.Log("GameOver");
         }
     }
 

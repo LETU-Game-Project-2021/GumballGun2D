@@ -13,13 +13,13 @@ public class Player : MonoBehaviour
     public bool upgrade = false;
     public GameObject nest;
     public GameObject drillObject;
+    public GameObject currentDrill;
     public Upgrader upgrader;
     public int avalibleDrills = 1;
     public bool doubleJump = false;
     public int extraJumps = 0;
     public bool jetpack = false;
     public bool drillPickup = false;
-    public bool destroyDrill = false;
 
     // Update is called once per frame
     void Update()
@@ -65,10 +65,11 @@ public class Player : MonoBehaviour
             upgrader.getTemporaryEnhancement();
         }
         else if (drillPickup) {
-            destroyDrill = true;
+
             avalibleDrills++;
+            Destroy(currentDrill);
             drillPickup = false;
-            destroyDrill = false;
+
         }
         //else if machine {
         //      interact (UI?)

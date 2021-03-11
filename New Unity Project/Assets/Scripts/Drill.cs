@@ -10,9 +10,7 @@ public class Drill : MonoBehaviour
         if (collision.gameObject.tag == "Player") {
             if (collision.gameObject.GetComponent<Player>().nest.gameObject.GetComponent<Nest>().destroyed) {
                 collision.gameObject.GetComponent<Player>().drillPickup = true;
-            }
-            if (collision.gameObject.GetComponent<Player>().destroyDrill == true) {
-                Destroy(this.gameObject);
+                collision.gameObject.GetComponent<Player>().currentDrill = this.gameObject;
             }
         }
     }
