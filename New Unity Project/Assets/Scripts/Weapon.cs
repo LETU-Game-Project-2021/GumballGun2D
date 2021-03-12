@@ -5,12 +5,14 @@ using UnityEngine;
 public class Weapon: MonoBehaviour
 {
     public Camera cam;
-    public Rigidbody2D player;
+    public Player player;
+    //public Rigidbody2D playerRb;
     public Transform firePoint;
 
     public gunMod currentMod, permanentMods;
 
     private Rigidbody2D rb;
+    private Rigidbody2D playerRb;
     private Dictionary<string, gunMod> modList;
     private float timeSinceFired = 0;
     private float burstDelay = 0.04f;
@@ -19,6 +21,7 @@ public class Weapon: MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rb = this.GetComponent<Rigidbody2D>();
+        playerRb = player.GetComponent<Rigidbody2D>();
         createMods();
         permanentMods = new gunMod(1, 1, 1, 1, 1, 0, false, false, false, false, false);
         currentMod = new gunMod(20, 1, 10, 1, .5f, 1, false, false, false, false, false);
@@ -28,7 +31,7 @@ public class Weapon: MonoBehaviour
     // Update is called once per frame
     void Update() {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        playerPos = player.position;
+        playerPos = playerRb.position;
         timeSinceFired += Time.deltaTime;
         //reduce stuck value and meter
         if(currentMod.automatic) {
@@ -58,7 +61,7 @@ public class Weapon: MonoBehaviour
     private float limitAngle(float angle, bool facingRight) {
         angle = (angle + 360) % 360;
         if(facingRight) {
-            if(angle < 180) {
+            /*if(angle < 180) {
                 if(angle > 90) {
                     return 90;
                 }
@@ -67,14 +70,20 @@ public class Weapon: MonoBehaviour
                 if(angle < 270) {
                     return 270;
                 }
+            }*/
+            if(angle > 90 && angle < 270) {
+                player.controller.Flip();
             }
         }
         else {
-            if(angle < 90) {
+            /*if(angle < 90) {
                 return 90;
             }
             if(angle > 270) {
                 return 270;
+            }*/
+            if(angle < 90 || angle > 270) {
+                player.controller.Flip();
             }
         }
         return angle;
