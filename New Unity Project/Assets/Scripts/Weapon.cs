@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Weapon: MonoBehaviour
 {
-    public Camera cam;
+    //public Camera cam;
     public Player player;
     //public Rigidbody2D playerRb;
     public Transform firePoint;
 
     public gunMod currentMod, permanentMods;
 
+    private Camera cam;
     private Rigidbody2D rb;
     private Rigidbody2D playerRb;
     private Dictionary<string, gunMod> modList;
@@ -20,6 +21,7 @@ public class Weapon: MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        cam = GameObject.FindObjectOfType<Camera>();
         rb = this.GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
         createMods();
