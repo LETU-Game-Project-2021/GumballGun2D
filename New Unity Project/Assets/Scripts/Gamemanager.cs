@@ -20,15 +20,11 @@ public class Gamemanager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("escape")) {
-            Debug.Log("Quit");
-            Application.Quit();
-        }
 
         if (Input.GetKeyDown("t")) {
             nestsDestroyed = 0;
             totalNests = 0;
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if (totalNests <= nestsDestroyed && !roomComplete) {

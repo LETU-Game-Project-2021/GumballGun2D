@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), -speed * Time.deltaTime);
             wanderStartTime += Time.deltaTime;
             if (wanderStartTime > wanderTime) {
+                wanderStartTime = 0;
                 Flip();
                 wander = false;
             }
@@ -67,6 +68,7 @@ public class Enemy : MonoBehaviour
             {
                 stillCurrTime += Time.deltaTime;
                 if (stillCurrTime > stillTime) {
+                    stillCurrTime = 0;
                     wander = true;
                     Flip();
                 }
