@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  player: {fileID: 4282145018873429069}
+  player: {fileID: 4282145018873429068}
   firePoint: {fileID: 4282145018627784764}
 --- !u!50 &4282145017999279104
 Rigidbody2D:
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 600
+  m_JetForce: 5
   m_MovementSmoothing: 0.05
   m_WhatIsGround:
     serializedVersion: 2
@@ -304,9 +305,17 @@ MonoBehaviour:
   controller: {fileID: 4282145018873429065}
   runSpeed: 40
   drill: 0
+  upgrade: 0
   nest: {fileID: 0}
   drillObject: {fileID: 5318918353578580494, guid: 2d8e004ff541ff4489b1b89ded281ac3,
     type: 3}
+  currentDrill: {fileID: 0}
+  upgrader: {fileID: 0}
+  avalibleDrills: 1
+  doubleJump: 0
+  extraJumps: 0
+  jetpack: 0
+  drillPickup: 0
 --- !u!50 &4282145018873429069
 Rigidbody2D:
   serializedVersion: 4

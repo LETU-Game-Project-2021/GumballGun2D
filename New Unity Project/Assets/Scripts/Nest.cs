@@ -42,7 +42,7 @@ public class Nest : MonoBehaviour
 
     void spawnEnemy()
     {
-
+        enemy.GetComponent<Enemy>().target = gameManger.gameObject.GetComponent<Gamemanager>().portalLocation.gameObject;
         Instantiate(enemy, transform.position, Quaternion.identity);
 
     }

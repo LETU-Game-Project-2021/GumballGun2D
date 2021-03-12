@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Weapon: MonoBehaviour
 {
-    public Camera cam;
-    public Rigidbody2D player;
+    //public Camera cam;
+    public Player player;
+    //public Rigidbody2D playerRb;
     public Transform firePoint;
 
     public gunMod currentMod, permanentMods;
 
+    private Camera cam;
     private Rigidbody2D rb;
+    private Rigidbody2D playerRb;
     private Dictionary<string, gunMod> modList;
     private float timeSinceFired = 0;
     private float burstDelay = 0.04f;
@@ -18,7 +21,9 @@ public class Weapon: MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        cam = GameObject.FindObjectOfType<Camera>();
         rb = this.GetComponent<Rigidbody2D>();
+        playerRb = player.GetComponent<Rigidbody2D>();
         createMods();
         permanentMods = new gunMod(1, 1, 1, 1, 1, 0, false, false, false, false, false);
         currentMod = new gunMod(20, 1, 10, 1, .5f, 1, false, false, false, false, false);
@@ -28,7 +33,7 @@ public class Weapon: MonoBehaviour
     // Update is called once per frame
     void Update() {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        playerPos = player.position;
+        playerPos = playerRb.position;
         timeSinceFired += Time.deltaTime;
         //reduce stuck value and meter
         if(currentMod.automatic) {
@@ -58,7 +63,7 @@ public class Weapon: MonoBehaviour
     private float limitAngle(float angle, bool facingRight) {
         angle = (angle + 360) % 360;
         if(facingRight) {
-            if(angle < 180) {
+            /*if(angle < 180) {
                 if(angle > 90) {
                     return 90;
                 }
@@ -67,14 +72,20 @@ public class Weapon: MonoBehaviour
                 if(angle < 270) {
                     return 270;
                 }
+            }*/
+            if(angle > 90 && angle < 270) {
+                player.controller.Flip();
             }
         }
         else {
-            if(angle < 90) {
+            /*if(angle < 90) {
                 return 90;
             }
             if(angle > 270) {
                 return 270;
+            }*/
+            if(angle < 90 || angle > 270) {
+                player.controller.Flip();
             }
         }
         return angle;
@@ -148,28 +159,37 @@ public class Weapon: MonoBehaviour
 
     //adjust individual attributes of currentMod
     public void alterMod(string attribute, float value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         switch(attribute) {
             case "velocity":
                 reference.velocity = value;
+                if(permanent) {
+                    permanentMods.velocity = value;
+                }
                 break;
             case "damage":
                 reference.damage = value;
+                if(permanent) {
+                    permanentMods.damage = value;
+                }
                 break;
             case "stuckLimit":
                 reference.stuckLimit = value;
+                if(permanent) {
+                    permanentMods.stuckLimit = value;
+                }
                 break;
             case "scale":
                 reference.scale = value;
+                if(permanent) {
+                    permanentMods.scale = value;
+                }
                 break;
             case "rate":
                 reference.rate = value;
+                if(permanent) {
+                    permanentMods.rate = value;
+                }
                 break;
             default:
                 Debug.LogError("Invalid attribute: " + attribute + "=" + value);
@@ -178,15 +198,12 @@ public class Weapon: MonoBehaviour
     }
 
     public void alterMod(string attribute, int value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         if(attribute == "shots") {
             reference.shots = value;
+            if(permanent) {
+                permanentMods.shots = value;
+            }
         }
         else {
             alterMod(attribute, (float)value, permanent);
@@ -194,28 +211,37 @@ public class Weapon: MonoBehaviour
     }
 
     public void alterMod(string attribute, bool value, bool permanent) {
-        gunMod reference;
-        if(permanent) {
-            reference = permanentMods;
-        }
-        else {
-            reference = currentMod;
-        }
+        gunMod reference = currentMod;
         switch(attribute) {
             case "automatic":
                 reference.automatic = value;
+                if(permanent) {
+                    permanentMods.automatic = value;
+                }
                 break;
             case "spray":
                 reference.spray = value;
+                if(permanent) {
+                    permanentMods.spray = value;
+                }
                 break;
             case "burst":
                 reference.burst = value;
+                if(permanent) {
+                    permanentMods.burst = value;
+                }
                 break;
             case "splash":
                 reference.splash = value;
+                if(permanent) {
+                    permanentMods.splash = value;
+                }
                 break;
             case "gravity":
                 reference.gravity = value;
+                if(permanent) {
+                    permanentMods.gravity = value;
+                }
                 break;
             default:
                 Debug.LogError("Invalid attribute: " + attribute + "=" + value);

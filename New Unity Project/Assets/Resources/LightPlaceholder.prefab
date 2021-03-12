@@ -31,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.35, y: -3.16, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 841575598626839047}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,12 +101,18 @@ MonoBehaviour:
   eHealth: 0
   enemyType: 0
   speed: 0
+  wallCheck: {fileID: 841575598626839047}
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
   stuck: 0
   fly: 0
-  target: {fileID: 697746824954844854, guid: a76640b3509b38d429f8dc3936f2a3a2, type: 3}
+  target: {fileID: 0}
   splat: 0
   timeStuck: 0
   timeDestroy: 5
+  wanderTime: 4
+  stillTime: 0.5
 --- !u!50 &1019857583447143778
 Rigidbody2D:
   serializedVersion: 4
@@ -169,3 +176,33 @@ CircleCollider2D:
   m_Offset: {x: 0.042270135, y: -0.073374666}
   serializedVersion: 2
   m_Radius: 0.0874228
+--- !u!1 &7792202838197200609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841575598626839047}
+  m_Layer: 0
+  m_Name: wallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &841575598626839047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792202838197200609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.022, y: -0.077, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1019857583447143783}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
