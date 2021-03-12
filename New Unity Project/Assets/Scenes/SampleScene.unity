@@ -880,6 +880,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nest
       objectReference: {fileID: 0}
+    - target: {fileID: 4736991046880407018, guid: 019c99da95eaea54096987248cafe5d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: StationaryUsable
+      objectReference: {fileID: 0}
     - target: {fileID: 4736991046880407019, guid: 019c99da95eaea54096987248cafe5d3,
         type: 3}
       propertyPath: gameManger

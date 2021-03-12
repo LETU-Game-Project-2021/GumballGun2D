@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8637940509102455333}
   m_Layer: 0
   m_Name: Nest
-  m_TagString: Untagged
+  m_TagString: StationaryUsable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   gameManger: {fileID: 7112828088125086607, guid: fcb7ed4098328e540ba1a680eb53a071,
     type: 3}
   currentDrill: 0
+  destroyed: 0
   drillTime: 5
 --- !u!58 &8637940509102455333
 CircleCollider2D:

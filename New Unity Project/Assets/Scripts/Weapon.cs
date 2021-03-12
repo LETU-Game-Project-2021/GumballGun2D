@@ -73,7 +73,7 @@ public class Weapon: MonoBehaviour
                     return 270;
                 }
             }*/
-            if(angle > 90 && angle < 270) {
+            if(angle > 100 && angle < 270) {
                 player.controller.Flip();
             }
         }
@@ -84,7 +84,7 @@ public class Weapon: MonoBehaviour
             if(angle > 270) {
                 return 270;
             }*/
-            if(angle < 90 || angle > 270) {
+            if(angle < 80 || angle > 270) {
                 player.controller.Flip();
             }
         }
