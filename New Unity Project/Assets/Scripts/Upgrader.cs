@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Upgrader : MonoBehaviour
 {
+    Weapon gun;
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
+        gun = GameObject.FindObjectOfType<Weapon>();
+        player = GameObject.FindObjectOfType<Player>();
     }
 
     //select and apply lasting upgrades
