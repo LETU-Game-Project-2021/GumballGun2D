@@ -17,28 +17,36 @@ public class Upgrader : MonoBehaviour
     public void getPermanentEnhancement() {
         switch(Random.Range(0, 6)) {
             case 0:// "doubleJump":
-                //change player tag
+                player.totalJumps = 2;
+                player.jetpack = false;
+                Debug.Log("Double jump");
                 break;
             case 1:// "jetpack":
-                //change player tag
+                player.totalJumps = 1;
+                player.jetpack = true;
+                Debug.Log("Jetpack");
                 break;
             case 2:// "automatic":
-                //weapon upgrade
+                gun.applyMod("machinegun");
+                Debug.Log("Automatic");
                 break;
             case 3:// "spray":
-                //weapon upgrade
+                gun.applyMod("shotgun");
+                Debug.Log("Shotgun");
                 break;
             case 4:// "burst":
-                //weapon upgrade
+                gun.applyMod("burst");
+                Debug.Log("Burst");
                 break;
             case 5:// "extraDrill":
-                //increment player value
+                player.availableDrills++;
+                Debug.Log("Extra drill");
                 break;
             case 6:// "shotCount":
-                //weapon upgrade
+                gun.alterMod("shots", gun.permanentMods.shots + 3, true);
+                Debug.Log("Extra shots");
                 break;
         }
-        //tell player chosen item
     }
 
     //select and apply timed upgrades

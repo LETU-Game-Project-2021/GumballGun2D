@@ -15,9 +15,10 @@ public class Player : MonoBehaviour
     public GameObject drillObject;
     public GameObject currentDrill;
     public Upgrader upgrader;
-    public int avalibleDrills = 1;
+    public int availableDrills = 1;
     public bool doubleJump = false;
-    public int extraJumps = 0;
+    public int totalJumps = 1;
+    public int remainingJumps = 1;
     public bool jetpack = false;
     public bool drillPickup = false;
 
@@ -54,19 +55,21 @@ public class Player : MonoBehaviour
 
     private void playerUse() {
 
-        if (drill && avalibleDrills > 0)
+        if (drill && availableDrills > 0)
         {
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
-            avalibleDrills--;
+            availableDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
         }
         else if (upgrade/* && sufficient coins*/)
         {
-            upgrader.getTemporaryEnhancement();
+            //upgrader.getTemporaryEnhancement();
+            //this is permanent just for testing purposes
+            upgrader.getPermanentEnhancement();
         }
         else if (drillPickup) {
 
-            avalibleDrills++;
+            availableDrills++;
             Destroy(currentDrill);
             drillPickup = false;
 
