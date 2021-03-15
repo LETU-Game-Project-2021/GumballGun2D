@@ -45,14 +45,16 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
-                if (!wasGrounded)
+                if(!wasGrounded) {
                     OnLandEvent.Invoke();
+                    this.GetComponent<Player>().remainingJumps = this.GetComponent<Player>().totalJumps;
+                }
             }
         }
     }
 
 
-    public void Move(float move, bool jump, bool fly, bool jetpack)
+    public void Move(float move, bool jump, int jumps, bool fly, bool jetpack)
     {
             // Move the character by finding the target velocity
             Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
@@ -72,11 +74,12 @@ public class CharacterController2D : MonoBehaviour
                 Flip();
             }*/
         // If the player should jump...
-        if (m_Grounded && jump && !jetpack)
+        if ((m_Grounded||jumps>0) && jump && !jetpack)
         {
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            this.GetComponent<Player>().remainingJumps--;
         }
         if(jetpack && fly) {
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JetForce), ForceMode2D.Force);

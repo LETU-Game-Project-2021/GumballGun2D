@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, jump, fly, jetpack);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, jump, remainingJumps, fly, jetpack);
         jump = false;
         fly = false;
     }
