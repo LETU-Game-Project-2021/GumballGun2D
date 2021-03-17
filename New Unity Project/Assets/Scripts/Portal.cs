@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Portal : MonoBehaviour
     {
         if (portalHealth <= 0) {
             gameOver = true;
+			SceneManager.LoadScene("GameOver");
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
