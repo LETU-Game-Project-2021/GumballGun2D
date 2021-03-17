@@ -11,6 +11,9 @@ public class Weapon: MonoBehaviour
 
     public gunMod currentMod, permanentMods;
 
+    public AudioClip fireSound;
+    public AudioSource sound;
+
     private Camera cam;
     private Rigidbody2D rb;
     private Rigidbody2D playerRb;
@@ -39,6 +42,7 @@ public class Weapon: MonoBehaviour
         if(currentMod.automatic) {
             if(Input.GetButton("Fire1")) {
                 fire();
+                sound.PlayOneShot(fireSound);
             }
         }
         else {

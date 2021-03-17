@@ -96,9 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f515b2b4b4fae740a157a54ff9b6bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   player: {fileID: 4282145018873429068}
   firePoint: {fileID: 4282145018627784764}
+  fireSound: {fileID: 8300000, guid: 57adf2e270771d148ad2ddee54cc75a2, type: 3}
+  sound: {fileID: 2650449029557033834, guid: 4842ce1ff278c3546b71043d559c2c68, type: 3}
 --- !u!50 &4282145017999279104
 Rigidbody2D:
   serializedVersion: 4
@@ -311,9 +312,10 @@ MonoBehaviour:
     type: 3}
   currentDrill: {fileID: 0}
   upgrader: {fileID: 0}
-  avalibleDrills: 1
+  availableDrills: 1
   doubleJump: 0
-  extraJumps: 0
+  totalJumps: 1
+  remainingJumps: 1
   jetpack: 0
   drillPickup: 0
 --- !u!50 &4282145018873429069

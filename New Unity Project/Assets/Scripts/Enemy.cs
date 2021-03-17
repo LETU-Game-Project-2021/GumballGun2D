@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
     public void Stuck() {
         speed = 0;
         this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-        this.gameObject.layer = (8); // Ground
+        //this.gameObject.layer = (8); // Ground
         this.gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
     }
 
