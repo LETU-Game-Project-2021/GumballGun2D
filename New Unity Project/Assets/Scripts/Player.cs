@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         //if (Input.GetButton("Jump"))
         {
-
             jump = true;
 
         }
@@ -58,6 +57,7 @@ public class Player : MonoBehaviour
         if (drill && availableDrills > 0)
         {
             Instantiate(drillObject, nest.transform.position, Quaternion.identity);
+            FindObjectOfType<SoundManager>().Play("Drill Start");
             availableDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
         }
@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
             //upgrader.getTemporaryEnhancement();
             //this is permanent just for testing purposes
             upgrader.getPermanentEnhancement();
+            FindObjectOfType<SoundManager>().Play("Gumball Machine");
         }
         else if (drillPickup) {
 

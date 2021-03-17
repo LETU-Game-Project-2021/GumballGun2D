@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2743649953415301935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2743649953415301929}
+  - component: {fileID: 2743649953415301934}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2743649953415301929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743649953415301935}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -18.640785}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2743649953415301934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743649953415301935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105828859d3c0ef4ca9b4e4da1e3a279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - soundName: fireSound
+    clip: {fileID: 8300000, guid: 57adf2e270771d148ad2ddee54cc75a2, type: 3}
+    volume: 0.221
+    pitch: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Theme
+    clip: {fileID: 8300000, guid: a1945157f5000c1468f516b927690cdc, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - soundName: Jump
+    clip: {fileID: 8300000, guid: 8fb464e2f2e2e67439031e0ffb0d135b, type: 3}
+    volume: 0.5
+    pitch: 2.65
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Gumball Machine
+    clip: {fileID: 8300000, guid: 25eb9e3050180804b80ad50f00d27b03, type: 3}
+    volume: 0.5
+    pitch: 2.65
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Drill Start
+    clip: {fileID: 8300000, guid: daa7094d4746ea5409317b1818eacad1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Drilling
+    clip: {fileID: 8300000, guid: 4aa62b7ee634ff34d907ff0d685006d1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
