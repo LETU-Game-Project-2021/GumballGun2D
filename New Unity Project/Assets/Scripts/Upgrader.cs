@@ -15,7 +15,7 @@ public class Upgrader : MonoBehaviour
 
     //select and apply lasting upgrades
     public void getPermanentEnhancement() {
-        switch(0/*Random.Range(0, 6)*/) {
+        switch(Random.Range(0, 6)) {
             case 0:// "doubleJump":
                 player.totalJumps++;
                 player.remainingJumps = player.totalJumps;

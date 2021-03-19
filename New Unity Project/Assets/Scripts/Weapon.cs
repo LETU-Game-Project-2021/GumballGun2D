@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Weapon: MonoBehaviour
 {
-    //public Camera cam;
     public Player player;
-    //public Rigidbody2D playerRb;
     public Transform firePoint;
 
     public gunMod currentMod, permanentMods;
@@ -18,6 +16,7 @@ public class Weapon: MonoBehaviour
     private float timeSinceFired = 0;
     private float burstDelay = 0.04f;
     private Vector2 playerPos, mousePos;
+    private float flipTolerance = 1;
 
     // Start is called before the first frame update
     void Start() {
@@ -43,54 +42,38 @@ public class Weapon: MonoBehaviour
         }
         else {
             if(Input.GetButtonDown("Fire1")) {
-
                 fire();
-
             }
         }
     }
 
     private void FixedUpdate() {
         Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        float angle = (Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 360) % 360;
         bool facingRight = true;
         if(this.GetComponentInParent<Player>().transform.localScale.x < 0) {
             facingRight = false;
         }
-        angle = limitAngle(angle, facingRight);
+        /*angle = */checkFlip(/*angle, */facingRight);
         rb.rotation = angle;
         transform.localPosition = new Vector2(0.127f, -0.033f);
     }
 
-    private float limitAngle(float angle, bool facingRight) {
-        angle = (angle + 360) % 360;
+    private /*float*/void checkFlip(/*float angle, */bool facingRight) {
+        //angle = (angle + 360) % 360;
         if(facingRight) {
-            /*if(angle < 180) {
-                if(angle > 90) {
-                    return 90;
-                }
-            }
-            else {
-                if(angle < 270) {
-                    return 270;
-                }
-            }*/
-            if(angle > 100 && angle < 270) {
+            //if(angle > 90 && angle < 270) {
+            if(mousePos.x-rb.position.x<-flipTolerance) {
                 player.controller.Flip();
             }
         }
         else {
-            /*if(angle < 90) {
-                return 90;
-            }
-            if(angle > 270) {
-                return 270;
-            }*/
-            if(angle < 80 || angle > 270) {
+            //if(angle < 90 || angle > 270) {
+            if(mousePos.x-rb.position.x>flipTolerance){
                 player.controller.Flip();
             }
         }
-        return angle;
+        //return angle;
     }
 
     //define a set of pre-made gun modifications
@@ -106,7 +89,7 @@ public class Weapon: MonoBehaviour
 
     //main function to call
     public void fire() {
-        if(timeSinceFired > currentMod.rate/* && stuck value < currentMod.stuckLimit && not in menus*/) {
+        if(timeSinceFired > currentMod.rate/* && stuck value < currentMod.stuckLimit*/) {
             //increase stuck value and meter
             if(currentMod.spray) {
                 for(int i = 0; i < currentMod.shots; i++) {
