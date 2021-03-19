@@ -32,9 +32,6 @@ public class Gamemanager : MonoBehaviour
             completeRoom();
         }
 
-        if (portal.GetComponent<Portal>().gameOver) {
-            Debug.Log("GameOver");
-        }
     }
 
     public void completeRoom() {

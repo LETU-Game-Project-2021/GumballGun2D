@@ -45,37 +45,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - soundName: fireSound
-    clip: {fileID: 8300000, guid: 57adf2e270771d148ad2ddee54cc75a2, type: 3}
+    clip: {fileID: 8300000, guid: 32bd594c03bdbf74c93a08d55fe1cd0e, type: 3}
     volume: 0.221
     pitch: 0.75
     loop: 0
     source: {fileID: 0}
   - soundName: Theme
-    clip: {fileID: 8300000, guid: a1945157f5000c1468f516b927690cdc, type: 3}
+    clip: {fileID: 8300000, guid: 8740101057a59624889a1a945b0b6bcb, type: 3}
     volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - soundName: Jump
-    clip: {fileID: 8300000, guid: 8fb464e2f2e2e67439031e0ffb0d135b, type: 3}
+    clip: {fileID: 8300000, guid: f17ecd03e1e523d4090a63e847e71d64, type: 3}
     volume: 0.5
     pitch: 2.65
     loop: 0
     source: {fileID: 0}
   - soundName: Gumball Machine
-    clip: {fileID: 8300000, guid: 25eb9e3050180804b80ad50f00d27b03, type: 3}
+    clip: {fileID: 8300000, guid: 873cd75d81a60b64ea0608de35d5fc06, type: 3}
     volume: 0.5
     pitch: 2.65
     loop: 0
     source: {fileID: 0}
   - soundName: Drill Start
-    clip: {fileID: 8300000, guid: daa7094d4746ea5409317b1818eacad1, type: 3}
+    clip: {fileID: 8300000, guid: c2c976224b5f7e54bb876aad989468f5, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Drilling
     clip: {fileID: 8300000, guid: 4aa62b7ee634ff34d907ff0d685006d1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Wave Spawner
+    clip: {fileID: 8300000, guid: 53e6d6bb0de45dc4788836119f46f4b1, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
