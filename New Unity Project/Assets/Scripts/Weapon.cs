@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon: MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Weapon: MonoBehaviour
     private Camera cam;
     private Rigidbody2D rb;
     private Rigidbody2D playerRb;
+    private Image stuckMeter;
+    private float stuckness = 0;
+    private Vector2 stuckBarSize;
     private Dictionary<string, gunMod> modList;
     private float timeSinceFired = 0;
     private float burstDelay = 0.04f;
@@ -23,6 +27,8 @@ public class Weapon: MonoBehaviour
         cam = GameObject.FindObjectOfType<Camera>();
         rb = this.GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
+        stuckMeter = GameObject.Find("StuckMeterInner").GetComponent<Image>();
+        stuckBarSize = stuckMeter.rectTransform.sizeDelta;
         createMods();
         permanentMods = new gunMod(1, 1, 1, 1, 1, 0, false, false, false, false, false);
         currentMod = new gunMod(20, 1, 10, 1, .5f, 1, false, false, false, false, false);
@@ -34,7 +40,8 @@ public class Weapon: MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         playerPos = playerRb.position;
         timeSinceFired += Time.deltaTime;
-        //reduce stuck value and meter
+        stuckness = Mathf.Max(0, stuckness - Time.deltaTime);
+        updateStuckBar();
         if(currentMod.automatic) {
             if(Input.GetButton("Fire1")) {
                 fire();
@@ -83,14 +90,15 @@ public class Weapon: MonoBehaviour
         modList.Add("machinegun", new gunMod(20, .7f, 100, .9f, 10, 1, true, false, false, false, false));
         modList.Add("shotgun", new gunMod(18, 1, 5, 1.2f, 1, 8, false, true, false, false, false));
         modList.Add("burst", new gunMod(20, .9f, 7, .9f, 2, 5, false, false, true, false, false));
-        modList.Add("heavy", new gunMod(8, 5, 3, 3, .3f, 1, false, false, false, true, true));
+        modList.Add("heavy", new gunMod(8, 5, 3, 3, .4f, 1, false, false, false, true, true));
         modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 5, true, true, false, false, false));
     }
 
     //main function to call
     public void fire() {
-        if(timeSinceFired > currentMod.rate/* && stuck value < currentMod.stuckLimit*/) {
-            //increase stuck value and meter
+        if(timeSinceFired > currentMod.rate && stuckness < currentMod.stuckLimit) {
+            stuckness++;
+            updateStuckBar();
             if(currentMod.spray) {
                 for(int i = 0; i < currentMod.shots; i++) {
                     launch();
@@ -137,6 +145,7 @@ public class Weapon: MonoBehaviour
             currentMod.burst = modList[mod].burst || permanentMods.burst;
             currentMod.splash = modList[mod].splash || permanentMods.splash;
             currentMod.gravity = modList[mod].gravity || permanentMods.gravity;
+            stuckness = 0;
         }
         else {
             Debug.LogError("Invalid mod: " + mod);
@@ -270,6 +279,12 @@ public class Weapon: MonoBehaviour
         dynamic original = getAttribute(currentMod, attribute);
         alterMod(attribute, value, false);
         StartCoroutine(upgradeTimer(attribute, original, duration));
+    }
+
+    //calculates new dimensions of hud stuck meter
+    private void updateStuckBar() {
+        float width = stuckness / currentMod.stuckLimit * stuckBarSize.x;
+        stuckMeter.rectTransform.sizeDelta = new Vector2(width, stuckBarSize.y);
     }
 
     //fire multiple shots with one input

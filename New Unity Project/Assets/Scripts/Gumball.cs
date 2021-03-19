@@ -77,7 +77,7 @@ public class Gumball : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0,0,360/splashCount*i);
             GameObject ball = Instantiate(Resources.Load("Gumball"), location, rotation) as GameObject;
             Gumball g = ball.GetComponent<Gumball>();
-            g.setVelocity(3);
+            g.setVelocity(3.6f);
             g.setDamage(.5f);
             g.setSplash(false);
             g.setGravity(true);
