@@ -35,9 +35,9 @@ public class Gumball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag != "Player" && collision.tag != "Gum" && collision.tag != "Weapon" && collision.tag != "StationaryUsable") {
             if(splash) {
-                createSplash(transform.position);
+                float dTime = Time.deltaTime;
+                createSplash(new Vector2(transform.position.x - rb.velocity.x * dTime, transform.position.y - rb.velocity.y * dTime));// move back one tick for collision purposes
             }
-
             Destroy(gameObject);
         }
         if(collision.tag == "Enemy") {
@@ -85,13 +85,3 @@ public class Gumball : MonoBehaviour
         }
     }
 }
-/*
-GameObject gumball = Instantiate(Resources.Load("Gumball"), firePoint.position, rotation) as GameObject;
-gumball.transform.localScale *= currentMod.scale;
-Gumball g = gumball.GetComponent<Gumball>();
-        g.setVelocity(currentMod.velocity);
-        g.setDamage(currentMod.damage);
-        g.setSplash(currentMod.splash);
-        g.setGravity(currentMod.gravity);
-        g.spray(currentMod.spray);
-*/

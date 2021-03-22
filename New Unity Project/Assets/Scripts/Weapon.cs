@@ -7,8 +7,9 @@ public class Weapon: MonoBehaviour
 {
     public Player player;
     public Transform firePoint;
-
     public gunMod currentMod, permanentMods;
+
+    public bool colorful;
 
     private Camera cam;
     private Rigidbody2D rb;
@@ -16,6 +17,7 @@ public class Weapon: MonoBehaviour
     private Image stuckMeter;
     private float stuckness = 0;
     private Vector2 stuckBarSize;
+    private bool stuck;
     private Dictionary<string, gunMod> modList;
     private float timeSinceFired = 0;
     private float burstDelay = 0.04f;
@@ -40,8 +42,14 @@ public class Weapon: MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         playerPos = playerRb.position;
         timeSinceFired += Time.deltaTime;
-        stuckness = Mathf.Max(0, stuckness - Time.deltaTime);
-        updateStuckBar();
+        if(stuckness > currentMod.stuckLimit) {
+            stuck = true;
+            StartCoroutine(unstick());
+        }
+        if(!stuck) {
+            stuckness = Mathf.Max(0, stuckness - Time.deltaTime);
+            updateStuckBar();
+        }
         if(currentMod.automatic) {
             if(Input.GetButton("Fire1")) {
                 fire();
@@ -61,26 +69,22 @@ public class Weapon: MonoBehaviour
         if(this.GetComponentInParent<Player>().transform.localScale.x < 0) {
             facingRight = false;
         }
-        /*angle = */checkFlip(/*angle, */facingRight);
+        checkFlip(facingRight);
         rb.rotation = angle;
         transform.localPosition = new Vector2(0.127f, -0.033f);
     }
 
-    private /*float*/void checkFlip(/*float angle, */bool facingRight) {
-        //angle = (angle + 360) % 360;
+    private void checkFlip(bool facingRight) {
         if(facingRight) {
-            //if(angle > 90 && angle < 270) {
             if(mousePos.x-rb.position.x<-flipTolerance) {
                 player.controller.Flip();
             }
         }
         else {
-            //if(angle < 90 || angle > 270) {
             if(mousePos.x-rb.position.x>flipTolerance){
                 player.controller.Flip();
             }
         }
-        //return angle;
     }
 
     //define a set of pre-made gun modifications
@@ -96,7 +100,7 @@ public class Weapon: MonoBehaviour
 
     //main function to call
     public void fire() {
-        if(timeSinceFired > currentMod.rate && stuckness < currentMod.stuckLimit) {
+        if(timeSinceFired > currentMod.rate && !stuck/*stuckness < currentMod.stuckLimit*/) {
             stuckness++;
             updateStuckBar();
             if(currentMod.spray) {
@@ -129,6 +133,9 @@ public class Weapon: MonoBehaviour
         g.setSplash(currentMod.splash);
         g.setGravity(currentMod.gravity);
         g.spray(currentMod.spray);
+        if(colorful) {
+            randomizeColor(g);
+        }
     }
 
     //overwrite currentMod as preset
@@ -150,6 +157,7 @@ public class Weapon: MonoBehaviour
         else {
             Debug.LogError("Invalid mod: " + mod);
         }
+        timeSinceFired = 65535;
     }
 
     //adjust individual attributes of currentMod
@@ -287,6 +295,19 @@ public class Weapon: MonoBehaviour
         stuckMeter.rectTransform.sizeDelta = new Vector2(width, stuckBarSize.y);
     }
 
+    //updates stuck limit while maintaining progress
+    public void restoreFraction(float jamLimit) {
+        float fraction = stuckness / currentMod.stuckLimit;
+        alterMod("stuckLimit", jamLimit, false);
+        stuckness = fraction * jamLimit;
+    }
+
+    //sets gumball to random color
+    private void randomizeColor(Gumball g) {
+        Color[] colors = new Color[] { Color.green, Color.cyan, Color.yellow, Color.red };
+        g.GetComponent<SpriteRenderer>().material.SetColor("_Color", colors[Random.Range(0, colors.Length)]);
+    }
+
     //fire multiple shots with one input
     IEnumerator burst() {
         float startTime = Time.time;
@@ -308,6 +329,18 @@ public class Weapon: MonoBehaviour
             yield return 0;
         }
         alterMod(attribute, original, false);
+    }
+
+    //waits five seconds and clears stuck property
+    IEnumerator unstick() {
+        float startTime = Time.time;
+        while(Time.time - startTime < 5) {
+            stuckness = (5 - (Time.time - startTime)) * currentMod.stuckLimit / 5;
+            updateStuckBar();
+            yield return 0;
+        }
+        stuckness = 0;
+        stuck = false;
     }
 }
 

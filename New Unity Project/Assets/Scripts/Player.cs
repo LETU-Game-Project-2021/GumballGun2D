@@ -63,10 +63,10 @@ public class Player : MonoBehaviour
         }
         else if (upgrade/* && sufficient coins*/)
         {
-            //upgrader.getTemporaryEnhancement();
-            //this is permanent just for testing purposes
-            upgrader.getPermanentEnhancement();
-            FindObjectOfType<SoundManager>().Play("Gumball Machine");
+            if(!upgrader.tempActive) {
+                upgrader.getTemporaryEnhancement();
+                FindObjectOfType<SoundManager>().Play("Gumball Machine");
+            }
         }
         else if (drillPickup) {
 
