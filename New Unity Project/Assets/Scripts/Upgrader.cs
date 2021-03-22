@@ -11,14 +11,18 @@ public class Upgrader : MonoBehaviour
     Weapon gun;
     Player player;
 
+    private Camera cam;
     private Image timerMeter;
     private Vector2 timerBarSize;
+    private float indicatorTime = 1.5f;
+    private float indicatorRiseSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         gun = GameObject.FindObjectOfType<Weapon>();
         player = GameObject.FindObjectOfType<Player>();
+        cam = GameObject.FindObjectOfType<Camera>();
         timerMeter = GameObject.Find("UpgradeMeterInner").GetComponent<Image>();
         timerBarSize = timerMeter.rectTransform.sizeDelta;
         timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
@@ -68,6 +72,7 @@ public class Upgrader : MonoBehaviour
     //select and apply timed upgrades
     public void getTemporaryEnhancement() {
         tempActive = true;
+        string indicator = "";
         float runSpeed = player.runSpeed;
         float jamLimit = gun.currentMod.stuckLimit;
         float fireRate = gun.currentMod.rate;
@@ -75,23 +80,26 @@ public class Upgrader : MonoBehaviour
         switch(Random.Range(0,4)) {
             case 0:// "moveSpeedUp":
                 player.runSpeed *= 1.7f;
-                Debug.Log("Speed up");
+                indicator = "Speed up";
                 break;
             case 1:// "jamLimitUp":
                 gun.alterMod("stuckLimit", gun.currentMod.stuckLimit * 2, false);
-                Debug.Log("Jam limit up");
+                indicator = "Jam limit up";
                 break;
             case 2:// "fireRateUp":
                 gun.alterMod("rate", gun.currentMod.rate / 1.5f, false);
-                Debug.Log("Fire rate up");
+                indicator = "Fire rate up";
                 break;
             case 3:// "splashOn":
                 gun.alterMod("splash", true, false);
-                Debug.Log("Splash activated");
+                indicator = "Splash";
                 break;
         }
-        //tell player chosen item
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        msg.text = indicator;
+        msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
         StartCoroutine(enhancementTimer(runSpeed, jamLimit, fireRate, splash));
+        StartCoroutine(indicatorFloat(msg));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -120,5 +128,14 @@ public class Upgrader : MonoBehaviour
         gun.currentMod.rate = fireRate;
         gun.currentMod.splash = splash;
         tempActive = false;
+    }
+
+    IEnumerator indicatorFloat(Text msg) {
+        float startTime = Time.time;
+        while(Time.time - startTime < indicatorTime) {
+            msg.transform.position = msg.transform.position + new Vector3(0, Time.deltaTime * indicatorRiseSpeed, 0);
+            yield return 0;
+        }
+        Destroy(msg.gameObject);
     }
 }
