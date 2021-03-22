@@ -11,7 +11,7 @@ public class Nest : MonoBehaviour
     private float lastSpawn = 0f;
     public bool destroyed = false;
     private float timeSinceDrill;
-    public float drillTime;
+    public static float drillTime;
 
     private void Start()
     {

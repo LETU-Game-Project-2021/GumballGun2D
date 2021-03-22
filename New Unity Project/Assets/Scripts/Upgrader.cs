@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Upgrader : MonoBehaviour
 {
+    public float timer;
     Weapon gun;
     Player player;
     // Start is called before the first frame update
@@ -15,7 +16,7 @@ public class Upgrader : MonoBehaviour
 
     //select and apply lasting upgrades
     public void getPermanentEnhancement() {
-        switch(Random.Range(0, 6)) {
+        switch(Random.Range(0, 7)) {
             case 0:// "doubleJump":
                 player.totalJumps++;
                 player.remainingJumps = player.totalJumps;
@@ -48,17 +49,22 @@ public class Upgrader : MonoBehaviour
                 gun.alterMod("shots", gun.permanentMods.shots + 3, true);
                 Debug.Log("Extra shots");
                 break;
+            case 7:// "drillSpeedUp":
+                Nest.drillTime *= .7f;
+                break;
         }
     }
 
     //select and apply timed upgrades
     public void getTemporaryEnhancement() {
+        float runSpeed = player.runSpeed;
+        float jamLimit = gun.currentMod.stuckLimit;
+        //float enemySpeed;
+        float fireRate = gun.currentMod.rate;
+        bool splash = gun.currentMod.splash;
         switch(Random.Range(0,5)) {
-            case 0:// "drillSpeedUp":
-                //umm
-                break;
-            case 1:// "moveSpeedUp":
-                //change player value
+            case 0:// "moveSpeedUp":
+                player.runSpeed *= 1.7f;
                 break;
             case 2:// "jamLimitUp":
                 //weapon upgrade
@@ -74,6 +80,7 @@ public class Upgrader : MonoBehaviour
                 break;
         }
         //tell player chosen item
+        StartCoroutine(enhancementTimer(runSpeed, jamLimit, /*enemySpeed, */fireRate, splash));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -87,6 +94,17 @@ public class Upgrader : MonoBehaviour
         if(collision.gameObject.tag == "Player") {
             collision.gameObject.GetComponent<Player>().upgrade = false;
         }
+    }
 
+    IEnumerator enhancementTimer(float runSpeed, float jamLimit, /*float enemySpeed, */float fireRate, bool splash) {
+        float startTime = Time.time;
+        while(Time.time - startTime < timer) {
+            //update timer UI
+            yield return 0;
+        }
+        player.runSpeed = runSpeed;
+        gun.currentMod.stuckLimit = jamLimit;
+        gun.currentMod.rate = fireRate;
+        gun.currentMod.splash = splash;
     }
 }
