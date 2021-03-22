@@ -75,8 +75,5 @@ public class Player : MonoBehaviour
             drillPickup = false;
 
         }
-        //else if machine {
-        //      interact (UI?)
-        //}
     }
 }

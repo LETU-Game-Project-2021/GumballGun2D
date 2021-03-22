@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrader : MonoBehaviour
 {
     public float timer;
     public bool tempActive = false;
+
     Weapon gun;
     Player player;
+
+    private Image timerMeter;
+    private Vector2 timerBarSize;
 
     // Start is called before the first frame update
     void Start()
     {
         gun = GameObject.FindObjectOfType<Weapon>();
         player = GameObject.FindObjectOfType<Player>();
+        timerMeter = GameObject.Find("UpgradeMeterInner").GetComponent<Image>();
+        timerBarSize = timerMeter.rectTransform.sizeDelta;
+        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
     }
 
     //select and apply lasting upgrades
@@ -59,6 +67,7 @@ public class Upgrader : MonoBehaviour
 
     //select and apply timed upgrades
     public void getTemporaryEnhancement() {
+        tempActive = true;
         float runSpeed = player.runSpeed;
         float jamLimit = gun.currentMod.stuckLimit;
         float fireRate = gun.currentMod.rate;
@@ -101,12 +110,15 @@ public class Upgrader : MonoBehaviour
     IEnumerator enhancementTimer(float runSpeed, float jamLimit, float fireRate, bool splash) {
         float startTime = Time.time;
         while(Time.time - startTime < timer) {
-            //update timer UI
+            float width = (timer-(Time.time-startTime)) / timer * timerBarSize.x;
+            timerMeter.rectTransform.sizeDelta = new Vector2(width, timerBarSize.y);
             yield return 0;
         }
+        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
         player.runSpeed = runSpeed;
         gun.restoreFraction(jamLimit);
         gun.currentMod.rate = fireRate;
         gun.currentMod.splash = splash;
+        tempActive = false;
     }
 }
