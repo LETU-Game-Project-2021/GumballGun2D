@@ -2253,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 15
   tempActive: 0
+  tempUpgradeCost: 3
 --- !u!1001 &1471304338
 PrefabInstance:
   m_ObjectHideFlags: 0

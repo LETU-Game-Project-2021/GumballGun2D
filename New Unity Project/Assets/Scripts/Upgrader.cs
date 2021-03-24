@@ -16,6 +16,7 @@ public class Upgrader : MonoBehaviour
     private Vector2 timerBarSize;
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
+    public int tempUpgradeCost;
 
     // Start is called before the first frame update
     void Start()

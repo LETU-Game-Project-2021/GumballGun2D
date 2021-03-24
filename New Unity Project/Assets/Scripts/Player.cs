@@ -62,10 +62,11 @@ public class Player : MonoBehaviour
             availableDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
         }
-        else if (upgrade/* && sufficient coins*/)
+        else if (upgrade && coins>upgrader.tempUpgradeCost)
         {
             if(!upgrader.tempActive) {
                 upgrader.getTemporaryEnhancement();
+                coins -= upgrader.tempUpgradeCost;
                 FindObjectOfType<SoundManager>().Play("Gumball Machine");
             }
         }
