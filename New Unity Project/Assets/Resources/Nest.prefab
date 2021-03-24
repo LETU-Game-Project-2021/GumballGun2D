@@ -99,9 +99,9 @@ MonoBehaviour:
   enemy: {fileID: 1019857583447143785, guid: ab6655b674821a94380a2dc979d7bae6, type: 3}
   gameManger: {fileID: 7112828088125086607, guid: fcb7ed4098328e540ba1a680eb53a071,
     type: 3}
+  coin: {fileID: 3018396642481212112, guid: 5c67ba6a917c9494ba002397c83bb971, type: 3}
   currentDrill: 0
   destroyed: 0
-  drillTime: 5
 --- !u!58 &8637940509102455333
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnWave() {
         int rand = Random.Range(0, 1);
-        Debug.Log("spawn");
+        FindObjectOfType<SoundManager>().Play("Wave Spawner");
         enemy[rand].GetComponent<Enemy>().target = gameManager.gameObject.GetComponent<Gamemanager>().portalLocation.gameObject;
         Instantiate(enemy[rand], transform.position, Quaternion.identity);
     }

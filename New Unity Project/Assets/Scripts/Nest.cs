@@ -7,12 +7,12 @@ public class Nest : MonoBehaviour
     public float spawnRate = 5;
     public GameObject enemy;
     public GameObject gameManger;
+    public GameObject coin;
     public bool currentDrill = false;
     private float lastSpawn = 0f;
     public bool destroyed = false;
     private float timeSinceDrill;
-    public static float drillTime;
-
+    public static float drillTime = 5f;
     private void Start()
     {
         gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;
@@ -34,7 +34,12 @@ public class Nest : MonoBehaviour
             timeSinceDrill += Time.deltaTime;
             if (timeSinceDrill > drillTime && !destroyed) {
                 destroyed = true;
+                FindObjectOfType<SoundManager>().Play("Nest Destroyed");
                 gameManger.gameObject.GetComponent<Gamemanager>().nestsDestroyed++;
+
+                for (int i = 0; i < 5; i++) 
+                    Instantiate(coin, transform.position, Quaternion.identity);
+
                 this.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
             }
         }

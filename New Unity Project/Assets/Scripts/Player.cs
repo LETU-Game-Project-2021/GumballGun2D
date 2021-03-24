@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public int remainingJumps = 1;
     public bool jetpack = false;
     public bool drillPickup = false;
+    public int coins;
 
     // Update is called once per frame
     void Update()

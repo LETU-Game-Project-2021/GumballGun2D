@@ -58,31 +58,43 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Jump
     clip: {fileID: 8300000, guid: f17ecd03e1e523d4090a63e847e71d64, type: 3}
-    volume: 0.5
-    pitch: 2.65
+    volume: 0.25
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Gumball Machine
     clip: {fileID: 8300000, guid: 873cd75d81a60b64ea0608de35d5fc06, type: 3}
-    volume: 0.5
-    pitch: 2.65
+    volume: 0.25
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Drill Start
     clip: {fileID: 8300000, guid: c2c976224b5f7e54bb876aad989468f5, type: 3}
-    volume: 0.5
-    pitch: 1
+    volume: 0.25
+    pitch: 0.68
     loop: 0
     source: {fileID: 0}
   - soundName: Drilling
     clip: {fileID: 8300000, guid: 4aa62b7ee634ff34d907ff0d685006d1, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Wave Spawner
     clip: {fileID: 8300000, guid: 53e6d6bb0de45dc4788836119f46f4b1, type: 3}
-    volume: 0.5
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Coin Pickup
+    clip: {fileID: 8300000, guid: 47adf03bf8d65c74b82ca70e4eb7bc90, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: Nest Destroyed
+    clip: {fileID: 8300000, guid: eab03ac067de5784a8dae2d1057fd6d9, type: 3}
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
