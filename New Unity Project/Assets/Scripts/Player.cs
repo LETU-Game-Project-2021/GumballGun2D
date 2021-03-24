@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
     public GameObject currentDrill;
     public Upgrader upgrader;
     public int availableDrills = 1;
-    public bool doubleJump = false;
+    //public bool doubleJump = false;
     public int totalJumps = 1;
-    public int remainingJumps = 1;
+    public int remainingJumps = 0;
     public bool jetpack = false;
     public bool drillPickup = false;
     public int coins;

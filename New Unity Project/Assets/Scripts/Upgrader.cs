@@ -36,7 +36,7 @@ public class Upgrader : MonoBehaviour
                 player.totalJumps++;
                 player.remainingJumps = player.totalJumps;
                 player.jetpack = false;
-                player.doubleJump = true;
+                //player.doubleJump = true;
                 Debug.Log("Double jump");
                 break;
             case 1:// "jetpack":
