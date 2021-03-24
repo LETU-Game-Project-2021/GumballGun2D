@@ -40,6 +40,7 @@ public class Gumball : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        FindObjectOfType<SoundManager>().Play("Hit");
         if(collision.tag == "Enemy") {
             //collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             collision.GetComponent<Enemy>().Damage();
