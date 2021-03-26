@@ -304,7 +304,7 @@ public class Weapon: MonoBehaviour
 
     //sets gumball to random color
     private void randomizeColor(Gumball g) {
-        Color[] colors = new Color[] { Color.green, Color.cyan, Color.yellow, Color.red };
+        Color[] colors = new Color[] { Color.green, Color.cyan, Color.yellow, Color.red, Color.magenta };
         g.GetComponent<SpriteRenderer>().material.SetColor("_Color", colors[Random.Range(0, colors.Length)]);
     }
 

@@ -74,6 +74,7 @@ public class Gumball : MonoBehaviour
 
     //generate gumballs as splash effect
     private void createSplash(Vector3 location) {
+        Color myColor = this.GetComponent<SpriteRenderer>().material.color;
         for(int i = 0; i < splashCount; i++) {
             Quaternion rotation = Quaternion.Euler(0,0,360/splashCount*i);
             GameObject ball = Instantiate(Resources.Load("Gumball"), location, rotation) as GameObject;
@@ -83,6 +84,7 @@ public class Gumball : MonoBehaviour
             g.setSplash(false);
             g.setGravity(true);
             g.spray(false);
+            g.GetComponent<SpriteRenderer>().material.SetColor("_Color", myColor);
         }
     }
 }
