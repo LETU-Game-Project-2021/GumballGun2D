@@ -21,13 +21,6 @@ public class Gamemanager : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown("t")) {
-            nestsDestroyed = 0;
-            totalNests = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
         if (totalNests <= nestsDestroyed && !roomComplete) {
             roomComplete = true;
             completeRoom();
