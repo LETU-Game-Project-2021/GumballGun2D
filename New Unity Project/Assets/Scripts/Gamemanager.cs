@@ -11,6 +11,7 @@ public class Gamemanager : MonoBehaviour
     public bool roomComplete = false;
     public GameObject portalLocation;
     public GameObject portal;
+	public LevelComplete completed;
 
     private void Start()
     {
@@ -39,5 +40,7 @@ public class Gamemanager : MonoBehaviour
         nestsDestroyed = 0;
         totalNests = 0;
         Debug.Log("Nests Destroyed!");
+		completed.GameComplete();
+		
     }
 }
