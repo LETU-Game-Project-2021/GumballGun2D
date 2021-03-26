@@ -20,6 +20,7 @@ public class LevelComplete : MonoBehaviour
 	
 	public void NextLevel()
 	{
+		Time.timeScale = 1f;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 	
