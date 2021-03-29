@@ -100,7 +100,7 @@ public class Weapon: MonoBehaviour
 
     //main function to call
     public void fire() {
-        if(timeSinceFired > currentMod.rate && !stuck/*stuckness < currentMod.stuckLimit*/) {
+        if(timeSinceFired > currentMod.rate && !stuck && Time.timeScale > 0) {
             stuckness++;
             updateStuckBar();
             if(currentMod.spray) {
