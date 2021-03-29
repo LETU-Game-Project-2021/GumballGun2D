@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Nest : MonoBehaviour
 {
-    public float spawnRate = 5;
+    public float spawnRate = 5f;
     public GameObject enemy;
     public GameObject gameManger;
     public GameObject coin;
@@ -12,7 +12,7 @@ public class Nest : MonoBehaviour
     private float lastSpawn = 0f;
     public bool destroyed = false;
     private float timeSinceDrill;
-    public static float drillTime = 5f;
+    public static float drillTime = 15f;
     private void Start()
     {
         gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;

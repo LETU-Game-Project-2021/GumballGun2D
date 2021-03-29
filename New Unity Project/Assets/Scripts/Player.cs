@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public GameObject drillObject;
     public GameObject currentDrill;
     public Upgrader upgrader;
+    public Text coinCounter;
     public int availableDrills = 1;
     //public bool doubleJump = false;
     public int totalJumps = 1;
@@ -22,6 +24,10 @@ public class Player : MonoBehaviour
     public bool jetpack = false;
     public bool drillPickup = false;
     public int coins;
+
+    private void Start() {
+        coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -67,6 +73,7 @@ public class Player : MonoBehaviour
             if(!upgrader.tempActive) {
                 upgrader.getTemporaryEnhancement();
                 coins -= upgrader.tempUpgradeCost;
+                coinCounter.text = coins.ToString();
                 FindObjectOfType<SoundManager>().Play("Gumball Machine");
             }
         }

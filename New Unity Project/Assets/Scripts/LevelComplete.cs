@@ -14,13 +14,14 @@ public class LevelComplete : MonoBehaviour
 	
 	public void GameComplete()
 	{
-		
+        Time.timeScale = 0f;
 		completeLevel.gameObject.SetActive(true);
 	}
 	
 	public void NextLevel()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 	
 }
