@@ -34,21 +34,14 @@ public class Player : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        if (Input.GetButtonDown("Jump"))
-        //if (Input.GetButton("Jump"))
-        {
+        if (Input.GetButtonDown("Jump")) {
             jump = true;
-
         }
-
         if(Input.GetButton("Jump")) {
             fly = true;
         }
-
-        if(Input.GetButtonDown("Use"))
-        {
+        if(Input.GetButtonDown("Use")) {
             playerUse();
-
         }
     }
 
@@ -63,10 +56,11 @@ public class Player : MonoBehaviour
 
         if (drill && availableDrills > 0)
         {
-            Instantiate(drillObject, nest.transform.position, Quaternion.identity);
+            Drill drill = (Instantiate(drillObject, nest.transform.position, Quaternion.identity) as GameObject).GetComponent<Drill>();
             FindObjectOfType<SoundManager>().Play("Drill Start");
             availableDrills--;
             nest.gameObject.GetComponent<Nest>().startDrill();
+            StartCoroutine(drill.displayTimer(Nest.drillTime));
         }
         else if (upgrade && coins>upgrader.tempUpgradeCost)
         {

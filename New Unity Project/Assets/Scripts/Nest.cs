@@ -55,7 +55,7 @@ public class Nest : MonoBehaviour
     public void startDrill() {
 
         currentDrill = true;
-        timeSinceDrill = Time.deltaTime;
+        timeSinceDrill = 0;//Time.deltaTime;
 
     }
 
