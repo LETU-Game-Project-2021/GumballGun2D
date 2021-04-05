@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamMovement: MonoBehaviour
 {
     public Transform player;
+    public float shiftDistX, shiftDistY;
     public float shiftTime = 0.4f;
     private float px, py, cx, cy, cz;
     private bool moving;
@@ -20,34 +21,34 @@ public class CamMovement: MonoBehaviour
     void Update() {
         px = player.position.x;
         py = player.position.y;
-        if(!moving && px - cx > 9) {
+        if(!moving && px - cx > shiftDistX) {
             shiftRight();
         }
-        if(!moving && cx - px > 9) {
+        if(!moving && cx - px > shiftDistX) {
             shiftLeft();
         }
-        if(!moving && py - cy > 5) {
+        if(!moving && py - cy > shiftDistY) {
             shiftUp();
         }
-        if(!moving && cy - py > 5) {
+        if(!moving && cy - py > shiftDistY) {
             shiftDown();
         }
     }
 
     private void shiftRight() {
-        StartCoroutine(shift(new Vector3(cx + 18, cy, cz)));
+        StartCoroutine(shift(new Vector3(cx + 2 * shiftDistX, cy, cz)));
     }
 
     private void shiftLeft() {
-        StartCoroutine(shift(new Vector3(cx - 18, cy, cz)));
+        StartCoroutine(shift(new Vector3(cx - 2 * shiftDistX, cy, cz)));
     }
 
     private void shiftUp() {
-        StartCoroutine(shift(new Vector3(cx, cy + 10, cz)));
+        StartCoroutine(shift(new Vector3(cx, cy + 2 * shiftDistY, cz)));
     }
 
     private void shiftDown() {
-        StartCoroutine(shift(new Vector3(cx, cy - 10, cz)));
+        StartCoroutine(shift(new Vector3(cx, cy - 2 * shiftDistY, cz)));
     }
 
     IEnumerator shift(Vector3 destination) {
