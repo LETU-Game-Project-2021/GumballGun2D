@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Upgrader : MonoBehaviour
 {
-    public float timer;
+    public bool permanent;
+    public static float timer = 15;
     public bool tempActive = false;
 
     Weapon gun;
@@ -17,6 +18,11 @@ public class Upgrader : MonoBehaviour
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
     public int tempUpgradeCost;
+    private Dictionary<string, int> costTable = new Dictionary<string, int>();
+
+    private float runSpeedScale = 1.7f;
+    private float stuckRateScale = 2;
+    private float fireRateScale = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,47 +33,59 @@ public class Upgrader : MonoBehaviour
         timerMeter = GameObject.Find("UpgradeMeterInner").GetComponent<Image>();
         timerBarSize = timerMeter.rectTransform.sizeDelta;
         timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
+        if(permanent) {
+            createPermanentCostTable();
+        }
     }
 
     //select and apply lasting upgrades
-    public void getPermanentEnhancement() {
-        switch(Random.Range(0, 7)) {
-            case 0:// "doubleJump":
+    public void getPermanentEnhancement(string selection) {
+        if(player.coins < costTable[selection]) {
+            return;
+        }
+        string indicator = "";
+        switch(selection) {
+            case "doubleJump":
                 player.totalJumps++;
                 player.remainingJumps = player.totalJumps;
                 player.jetpack = false;
-                //player.doubleJump = true;
-                Debug.Log("Double jump");
+                indicator = "Double jump";
                 break;
-            case 1:// "jetpack":
+            case "jetpack":
                 player.totalJumps = 1;
                 player.jetpack = true;
-                Debug.Log("Jetpack");
+                indicator = "Jetpack";
                 break;
-            case 2:// "automatic":
+            case "automatic":
                 gun.applyMod("machinegun");
-                Debug.Log("Automatic");
+                indicator = "Automatic";
                 break;
-            case 3:// "spray":
+            case "spray":
                 gun.applyMod("shotgun");
-                Debug.Log("Shotgun");
+                indicator = "Shotgun";
                 break;
-            case 4:// "burst":
+            case "burst":
                 gun.applyMod("burst");
-                Debug.Log("Burst");
+                indicator = "Burst";
                 break;
-            case 5:// "extraDrill":
+            case "extraDrill":
                 player.availableDrills++;
-                Debug.Log("Extra drill");
+                indicator = "Extra drill";
                 break;
-            case 6:// "shotCount":
+            case "shotCount":
                 gun.alterMod("shots", gun.permanentMods.shots + 3, true);
-                Debug.Log("Extra shots");
+                indicator = "Extra shots";
                 break;
-            case 7:// "drillSpeedUp":
+            case "drillSpeedUp":
                 Nest.drillTime *= .7f;
+                indicator = "Drill speed up";
                 break;
         }
+        player.changeCoin(-costTable[selection]);
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        msg.text = indicator;
+        msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
+        StartCoroutine(indicatorFloat(msg));
     }
 
     //select and apply timed upgrades
@@ -80,15 +98,15 @@ public class Upgrader : MonoBehaviour
         bool splash = gun.currentMod.splash;
         switch(Random.Range(0,4)) {
             case 0:// "moveSpeedUp":
-                player.runSpeed *= 1.7f;
+                player.runSpeed *= runSpeedScale;
                 indicator = "Speed up";
                 break;
             case 1:// "jamLimitUp":
-                gun.alterMod("stuckLimit", gun.currentMod.stuckLimit * 2, false);
+                gun.alterMod("stuckLimit", gun.currentMod.stuckLimit * stuckRateScale, false);
                 indicator = "Jam limit up";
                 break;
             case 2:// "fireRateUp":
-                gun.alterMod("rate", gun.currentMod.rate / 1.5f, false);
+                gun.alterMod("rate", gun.currentMod.rate / fireRateScale, false);
                 indicator = "Fire rate up";
                 break;
             case 3:// "splashOn":
@@ -103,16 +121,62 @@ public class Upgrader : MonoBehaviour
         StartCoroutine(indicatorFloat(msg));
     }
 
+    private void createPermanentCostTable() {
+        costTable.Add("doubleJump", 1);
+        costTable.Add("jetpack", 1);
+        costTable.Add("automatic", 1);
+        costTable.Add("spray", 1);
+        costTable.Add("burst", 1);
+        costTable.Add("extraDrill", 1);
+        costTable.Add("shotCount", 1);
+        costTable.Add("drillSpeedUp", 1);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
-            collision.gameObject.GetComponent<Player>().upgrade = true;
-            collision.gameObject.GetComponent<Player>().upgrader = this;
+            if(permanent) {
+                collision.gameObject.GetComponent<Player>().upgradeP = true;
+                collision.gameObject.GetComponent<Player>().upgraderPerm = this;
+            }
+            else {
+                collision.gameObject.GetComponent<Player>().upgradeT = true;
+                collision.gameObject.GetComponent<Player>().upgraderTemp = this;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
-            collision.gameObject.GetComponent<Player>().upgrade = false;
+            if(permanent) {
+                collision.gameObject.GetComponent<Player>().upgradeP = false;
+            }
+            else {
+                collision.gameObject.GetComponent<Player>().upgradeT = false;
+            }
+        }
+    }
+
+    IEnumerator enhancementTimer(string status) {
+        float startTime = Time.time;
+        while(Time.time - startTime < timer) {
+            float width = (timer - (Time.time - startTime)) / timer * timerBarSize.x;
+            timerMeter.rectTransform.sizeDelta = new Vector2(width, timerBarSize.y);
+            yield return 0;
+        }
+        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
+        switch(status) {
+            case "speed":
+                player.runSpeed /= runSpeedScale;
+                break;
+            case "stuck":
+                gun.alterMod("stuckLimit", gun.currentMod.stuckLimit / stuckRateScale, false);
+                break;
+            case "rate":
+                gun.alterMod("rate", gun.currentMod.rate * fireRateScale, false);
+                break;
+            case "splash":
+                gun.alterMod("splash", false, false);
+                break;
         }
     }
 

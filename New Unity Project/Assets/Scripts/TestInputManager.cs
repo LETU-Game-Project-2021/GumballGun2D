@@ -14,13 +14,13 @@ public class TestInputManager : MonoBehaviour
         if(!player) {
             Debug.Log("Could not find player");
         }
-        Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash, 8.Jetpack, 9.Gravity");
+        //Debug.Log("Test keys: 1.Default, 2.Automatic, 3.Spray, 4.Ultimate, 5.Burst, 6.Heavy, 7.Splash, 8.Jetpack, 9.Gravity");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        /*if(Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log("Default");
             gun.applyMod("default");
         }
@@ -57,6 +57,6 @@ public class TestInputManager : MonoBehaviour
             bool temp = !gun.currentMod.gravity;
             Debug.Log("Gravity = " + temp);
             gun.alterMod("gravity", temp, true);
-        }
+        }*/
     }
 }
