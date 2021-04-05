@@ -3924,10 +3924,20 @@ PrefabInstance:
       propertyPath: colorful
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4282145017999279134, guid: 89fa3bed5c4800046b3e57acb587d77e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4282145018873429062, guid: 89fa3bed5c4800046b3e57acb587d77e,
         type: 3}
       propertyPath: m_Name
       value: MCPlaceholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282145018873429064, guid: 89fa3bed5c4800046b3e57acb587d77e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4282145018873429065, guid: 89fa3bed5c4800046b3e57acb587d77e,
         type: 3}

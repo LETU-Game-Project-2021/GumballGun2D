@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4282145018873429068}
   firePoint: {fileID: 4282145018627784764}
+  colorful: 1
 --- !u!50 &4282145017999279104
 Rigidbody2D:
   serializedVersion: 4
@@ -407,12 +408,13 @@ MonoBehaviour:
     type: 3}
   currentDrill: {fileID: 0}
   upgrader: {fileID: 0}
+  coinCounter: {fileID: 0}
   availableDrills: 1
-  doubleJump: 0
   totalJumps: 1
   remainingJumps: 1
   jetpack: 0
   drillPickup: 0
+  coins: 0
 --- !u!50 &4282145018873429069
 Rigidbody2D:
   serializedVersion: 4
