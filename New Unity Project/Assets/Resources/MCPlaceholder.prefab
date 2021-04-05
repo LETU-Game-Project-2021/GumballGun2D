@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 600
-  m_JetForce: 5
+  m_JetForce: 30
   m_MovementSmoothing: 0.05
   m_WhatIsGround:
     serializedVersion: 2
@@ -402,12 +402,14 @@ MonoBehaviour:
   controller: {fileID: 4282145018873429065}
   runSpeed: 40
   drill: 0
-  upgrade: 0
+  upgradeT: 0
+  upgradeP: 0
   nest: {fileID: 0}
   drillObject: {fileID: 5318918353578580494, guid: 2d8e004ff541ff4489b1b89ded281ac3,
     type: 3}
   currentDrill: {fileID: 0}
-  upgrader: {fileID: 0}
+  upgraderTemp: {fileID: 0}
+  upgraderPerm: {fileID: 0}
   coinCounter: {fileID: 0}
   availableDrills: 1
   totalJumps: 1
