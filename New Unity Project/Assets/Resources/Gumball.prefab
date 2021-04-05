@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42058d99b7a80cb46871b51e887dd3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprayRotationLimit: 20
+  sprayRotationLimit: 15
   splashCount: 20
   rb: {fileID: 318776298115587585}
 --- !u!50 &318776298115587585

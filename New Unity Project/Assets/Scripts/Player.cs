@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
             string[] tempUpgradeList = { "doubleJump", "jetpack", "automatic", "spray", "burst", "extraDrill", "shotCount", "drillSpeedUp" };
             upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)]);
         }
-        else if(upgradeT && coins > upgraderTemp.tempUpgradeCost) {
+        else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
             if(!upgraderTemp.tempActive) {
                 upgraderTemp.getTemporaryEnhancement();
                 changeCoin(-upgraderTemp.tempUpgradeCost);

@@ -40,6 +40,9 @@ public class Upgrader : MonoBehaviour
 
     //select and apply lasting upgrades
     public void getPermanentEnhancement(string selection) {
+        if(player.coins < costTable[selection]) {
+            return;
+        }
         string indicator = "";
         switch(selection) {
             case "doubleJump":
