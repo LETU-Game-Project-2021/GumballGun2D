@@ -96,6 +96,7 @@ public class Weapon: MonoBehaviour
         modList.Add("burst", new gunMod(20, .9f, 7, .9f, 2, 5, false, false, true, false, false));
         modList.Add("heavy", new gunMod(8, 5, 3, 3, .4f, 1, false, false, false, true, true));
         modList.Add("ultimate", new gunMod(25, 3, 250, .8f, 100, 5, true, true, false, false, false));
+        modList.Add("heavyHose", new gunMod(10, 5, 300, 3, 10, 1, true, false, false, true, true));
     }
 
     //main function to call

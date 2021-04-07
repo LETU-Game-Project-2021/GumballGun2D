@@ -20,6 +20,10 @@ public class TestInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+            Debug.Log("Heavy Hose");
+            gun.applyMod("heavyHose");
+        }
         /*if(Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log("Default");
             gun.applyMod("default");
