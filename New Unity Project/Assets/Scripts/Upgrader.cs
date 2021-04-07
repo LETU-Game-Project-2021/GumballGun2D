@@ -18,7 +18,7 @@ public class Upgrader : MonoBehaviour
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
     public int tempUpgradeCost;
-    private Dictionary<string, int> costTable = new Dictionary<string, int>();
+    private List<PowerUp> powerups = new List<PowerUp>();
 
     private float runSpeedScale = 1.7f;
     private float stuckRateScale = 2;
@@ -34,13 +34,13 @@ public class Upgrader : MonoBehaviour
         timerBarSize = timerMeter.rectTransform.sizeDelta;
         timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
         if(permanent) {
-            createPermanentCostTable();
+            createPowerups();
         }
     }
 
     //select and apply lasting upgrades
-    public void getPermanentEnhancement(string selection) {
-        if(player.coins < costTable[selection]) {
+    public void getPermanentEnhancement(string selection, int cost) {
+        if(player.coins < cost) {
             return;
         }
         string indicator = "";
@@ -81,7 +81,7 @@ public class Upgrader : MonoBehaviour
                 indicator = "Drill speed up";
                 break;
         }
-        player.changeCoin(-costTable[selection]);
+        player.changeCoin(-cost);
         Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
         msg.text = indicator;
         msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
@@ -121,15 +121,15 @@ public class Upgrader : MonoBehaviour
         StartCoroutine(indicatorFloat(msg));
     }
 
-    private void createPermanentCostTable() {
-        costTable.Add("doubleJump", 1);
-        costTable.Add("jetpack", 1);
-        costTable.Add("automatic", 1);
-        costTable.Add("spray", 1);
-        costTable.Add("burst", 1);
-        costTable.Add("extraDrill", 1);
-        costTable.Add("shotCount", 1);
-        costTable.Add("drillSpeedUp", 1);
+    private void createPowerups() {
+        powerups.Add(new PowerUp("doubleJump",   1, Resources.Load<Image>("PUp images/doubleJumpMenu.png"),     Resources.Load<Image>("PUp images/doubleJumpActive.png"),   "Allows you to perform an additional jump mid-air", this));
+        powerups.Add(new PowerUp("jetpack",      1, Resources.Load<Image>("PUp images/jetpackMenu.png"),        Resources.Load<Image>("PUp images/jetpackActive.png"),      "Allows you to fly through the sky (hold jump key)", this));
+        powerups.Add(new PowerUp("automatic",    1, Resources.Load<Image>("PUp images/automaticMenu.png"),      Resources.Load<Image>("PUp images/automaticActive.png"),    "Fire a continuous stream of gumballs (click and hold)", this));
+        powerups.Add(new PowerUp("spray",        1, Resources.Load<Image>("PUp images/sprayMenu.png"),          Resources.Load<Image>("PUp images/sprayActive.png"),        "Spray a cluster of gumballs with each shot", this));
+        powerups.Add(new PowerUp("burst",        1, Resources.Load<Image>("PUp images/burstMenu.png"),          Resources.Load<Image>("PUp images/burstActive.png"),        "Rapidly fire multiple gumballs with each shot", this));
+        powerups.Add(new PowerUp("extraDrill",   1, Resources.Load<Image>("PUp images/extraDrillMenu.png"),     Resources.Load<Image>("PUp images/extraDrillActive.png"),   "Allows an additional drill to be placed down", this));
+        powerups.Add(new PowerUp("shotCount",    1, Resources.Load<Image>("PUp images/shotCountMenu.png"),      Resources.Load<Image>("PUp images/shotCountActive.png"),    "Increases the number of gumballs in \"spray\" and \"burst\" modes", this));
+        powerups.Add(new PowerUp("drillSpeedUp", 1, Resources.Load<Image>("PUp images/drillSpeedUpMenu.png"),   Resources.Load<Image>("PUp images/drillSpeedUpActive.png"), "Decreases the time required to drill a nest", this));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

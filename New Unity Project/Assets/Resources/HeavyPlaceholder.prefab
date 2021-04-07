@@ -113,6 +113,8 @@ MonoBehaviour:
   timeDestroy: 10
   wanderTime: 0
   stillTime: 0
+  attackStrength: 120
+  timeBetweenAttacks: 8
 --- !u!58 &2552626269686977512
 CircleCollider2D:
   m_ObjectHideFlags: 0

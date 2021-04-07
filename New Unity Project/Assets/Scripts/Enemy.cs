@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     private bool m_FacingRight = true;
     public float stillTime;
     private float stillCurrTime;
+    public float attackStrength;
+    public float timeBetweenAttacks;
+    private float timeSinceAttack = 65535;
 
     const float k_GroundedRadius = .2f;
 
@@ -46,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        timeSinceAttack += Time.deltaTime;
         if (wander)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), -speed * Time.deltaTime);
@@ -93,6 +97,7 @@ public class Enemy : MonoBehaviour
 
     public void Stuck() {
         speed = 0;
+        attackStrength = 0;
         this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         //this.gameObject.layer = (8); // Ground
         this.gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
@@ -108,16 +113,26 @@ public class Enemy : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player") {
-    //        pTarget = target;
-    //        target = collision.gameObject;
-    //    }
-    //}
+    private void Attack(GameObject player) {
+        if(!stuck) {
+            player.GetComponent<Rigidbody2D>().AddForce((player.transform.position - gameObject.GetComponent<CircleCollider2D>().transform.position) * attackStrength + new Vector3(0, 2, 0), ForceMode2D.Impulse);
+            player.GetComponent<Player>().stun();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            //pTarget = target;
+            //target = collision.gameObject;
+            if(timeSinceAttack > timeBetweenAttacks) {
+                Attack(collision.gameObject);
+                timeSinceAttack = 0;
+            }
+        }
+    }
 
     //private void OnTriggerExit2D(Collider2D collision)
     //{

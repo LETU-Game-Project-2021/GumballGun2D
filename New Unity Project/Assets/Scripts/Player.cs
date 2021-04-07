@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public bool jetpack = false;
     public bool drillPickup = false;
     public int coins;
+    public bool stunned = false;
+    private float stunTime = 3;
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
@@ -33,16 +35,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-        if (Input.GetButtonDown("Jump")) {
-            jump = true;
+        if(!stunned) {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+            if(Input.GetButtonDown("Jump")) {
+                jump = true;
+            }
+            if(Input.GetButton("Jump")) {
+                fly = true;
+            }
+            if(Input.GetButtonDown("Use")) {
+                playerUse();
+            }
         }
-        if(Input.GetButton("Jump")) {
-            fly = true;
-        }
-        if(Input.GetButtonDown("Use")) {
-            playerUse();
+        else {
+            horizontalMove = 0;
         }
     }
 
@@ -66,7 +72,7 @@ public class Player : MonoBehaviour
             //bring up buy menu
             //but for now I'll pick a random one for testing and charge one coin
             string[] tempUpgradeList = { "doubleJump", "jetpack", "automatic", "spray", "burst", "extraDrill", "shotCount", "drillSpeedUp" };
-            upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)]);
+            upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)],1);
         }
         else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
             if(!upgraderTemp.tempActive) {
@@ -85,5 +91,18 @@ public class Player : MonoBehaviour
     public void changeCoin(int diff) {
         coins += diff;
         coinCounter.text = coins.ToString();
+    }
+
+    public void stun() {
+        stunned = true;
+        StartCoroutine(isStunned());
+    }
+
+    IEnumerator isStunned() {
+        float startTime = Time.time;
+        while(Time.time - startTime < stunTime) {
+            yield return 0;
+        }
+        stunned = false;
     }
 }
