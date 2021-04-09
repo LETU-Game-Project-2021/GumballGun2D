@@ -113,4 +113,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   permanent: 1
   tempActive: 0
+  openMenuTime: 0
+  powerUpMenuImages:
+  - {fileID: 21300000, guid: 483c48d21b1273843888dcf1ad6bde33, type: 3}
+  - {fileID: 21300000, guid: ba35a75c40a9c8c419c5c015d339d8a3, type: 3}
+  - {fileID: 21300000, guid: 5c36fcf3c860cda44866b8b5781bedf8, type: 3}
+  - {fileID: 21300000, guid: 3b8625c8f31a220439042972ece49ab3, type: 3}
+  - {fileID: 21300000, guid: 27f06e99acdfda54baa1f911c241af0e, type: 3}
+  - {fileID: 21300000, guid: 9bdb4c496e0aac348b047ada358ab752, type: 3}
+  - {fileID: 21300000, guid: 9356dadf15dabec4a9ee4ecd17ba6985, type: 3}
+  - {fileID: 21300000, guid: c0ddf8fba1d4c9a45afaf5a54e450630, type: 3}
+  powerUpActiveImages:
+  - {fileID: 21300000, guid: 83e4dba5717e598428a8099943343948, type: 3}
+  - {fileID: 21300000, guid: c2a34834e08ac6b47a83c830fe68e7f6, type: 3}
+  - {fileID: 21300000, guid: e69151974162fa44eb5be17bfa917261, type: 3}
+  - {fileID: 21300000, guid: 1a73e387a25b1af45af3ca159b5dd6c6, type: 3}
+  - {fileID: 21300000, guid: 65321c51d80619e43bf6a89dd4d74edd, type: 3}
+  - {fileID: 21300000, guid: 17ba437ba9e759844ab58e2e49b0e527, type: 3}
+  - {fileID: 21300000, guid: b8e70f4e65497ae41b38c7e3f613f19b, type: 3}
+  - {fileID: 21300000, guid: c9520e91fff62f94db98d325088b1f20, type: 3}
   tempUpgradeCost: 0
+  enhanceBreak: 1

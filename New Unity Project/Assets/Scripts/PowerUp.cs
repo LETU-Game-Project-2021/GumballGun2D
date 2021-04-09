@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUp
+public class PowerUp : MonoBehaviour
 {
-    public Image menuImg;
-    public Image activeImg;
+    public Sprite menuImg;
+    public Sprite activeImg;
     public int cost;
     public string description;
     public string keyword;
     public Upgrader upgrader;
+    public static bool waiting = false;
 
-    public PowerUp(string upgradeWord, int coins, Image menu, Image active, string text, Upgrader parent) {
+    public PowerUp(string upgradeWord, int coins, Sprite menu, Sprite active, string text, Upgrader parent) {
         menuImg = menu;
         activeImg = active;
         cost = coins;
@@ -22,6 +23,16 @@ public class PowerUp
     }
 
     public void buy() {
+        upgrader.enhanceBreak = false;
+        StartCoroutine(waitForEnhancementClear());
+    }
+
+    IEnumerator waitForEnhancementClear() {
+        while(waiting) {
+            yield return 0;
+        }
         upgrader.getPermanentEnhancement(keyword, cost);
+        upgrader.enhanceBreak = true;
+        StartCoroutine(upgrader.openBuyMenu(false));
     }
 }
