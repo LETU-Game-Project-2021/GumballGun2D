@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Upgrader : MonoBehaviour
+public class Upgrader: MonoBehaviour
 {
     public bool permanent;
     public static float timer = 15;
@@ -30,8 +30,7 @@ public class Upgrader : MonoBehaviour
     private float fireRateScale = 1.5f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         gun = GameObject.FindObjectOfType<Weapon>();
         player = GameObject.FindObjectOfType<Player>();
         cam = GameObject.FindObjectOfType<Camera>();
@@ -233,7 +232,7 @@ public class Upgrader : MonoBehaviour
         float startTime = Time.time;
         float ratio = 0;
         while(Time.time - startTime < openMenuTime) {
-            ratio = (opening ? (Time.time-startTime)/openMenuTime : 1 - (Time.time - startTime)/openMenuTime);
+            ratio = (opening ? (Time.time - startTime) / openMenuTime : 1 - (Time.time - startTime) / openMenuTime);
             menu.transform.localScale = new Vector3(ratio, ratio, 1);
             yield return 0;
         }
