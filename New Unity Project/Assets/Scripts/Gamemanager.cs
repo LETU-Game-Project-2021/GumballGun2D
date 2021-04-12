@@ -14,6 +14,7 @@ public class Gamemanager : MonoBehaviour
     public GameObject barrier;
 	public LevelComplete completed;
     public int roomNumber = 0;
+    public GameObject arrow;
     public Transform position1;
     public Transform position2;
 
@@ -47,6 +48,7 @@ public class Gamemanager : MonoBehaviour
                 barrier.transform.position = position2.position;
                 break;
         }
+        arrow.SetActive(true);
 
 		//completed.GameComplete();
 		

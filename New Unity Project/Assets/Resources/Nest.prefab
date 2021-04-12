@@ -102,6 +102,7 @@ MonoBehaviour:
   coin: {fileID: 3018396642481212112, guid: 5c67ba6a917c9494ba002397c83bb971, type: 3}
   currentDrill: 0
   destroyed: 0
+  destroyedNest: {fileID: 21300000, guid: 6997dd8d1252a5246ad323cb8a455f53, type: 3}
 --- !u!58 &8637940509102455333
 CircleCollider2D:
   m_ObjectHideFlags: 0

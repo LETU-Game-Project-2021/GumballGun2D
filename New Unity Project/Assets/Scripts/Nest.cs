@@ -13,6 +13,8 @@ public class Nest : MonoBehaviour
     public bool destroyed = false;
     private float timeSinceDrill;
     public static float drillTime = 15f;
+    public Sprite destroyedNest;
+
     private void Start()
     {
         gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;
@@ -40,7 +42,7 @@ public class Nest : MonoBehaviour
                 for (int i = 0; i < 5; i++) 
                     Instantiate(coin, transform.position, Quaternion.identity);
 
-                this.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
+                this.GetComponent<SpriteRenderer>().sprite = destroyedNest;
             }
         }
     }
