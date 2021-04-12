@@ -14,9 +14,7 @@ GameObject:
   - component: {fileID: 2552626269686977512}
   - component: {fileID: 2552626269686977519}
   - component: {fileID: 2552626269686977518}
-  - component: {fileID: 7888641199015384487}
-  - component: {fileID: 6796365680522851711}
-  - component: {fileID: 4151818833281349598}
+  - component: {fileID: 5376570436483074838}
   m_Layer: 9
   m_Name: HeavyPlaceholder
   m_TagString: Enemy
@@ -147,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.050935, y: -0.31392092}
+  m_Offset: {x: -0.050935, y: -0.239559}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5072602, y: 0.012158185}
+  m_Size: {x: 0.5072602, y: 0.16088201}
   m_EdgeRadius: 0
 --- !u!50 &2552626269686977518
 Rigidbody2D:
@@ -181,7 +179,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7888641199015384487
+--- !u!58 &5376570436483074838
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,41 +192,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.041841652, y: -0.21940552}
+  m_Offset: {x: -0.0016524077, y: -0.13527112}
   serializedVersion: 2
-  m_Radius: 0.09318189
---- !u!58 &6796365680522851711
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2552626269686977517}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.15224043, y: -0.18283792}
-  serializedVersion: 2
-  m_Radius: 0.09984825
---- !u!58 &4151818833281349598
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2552626269686977517}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.19328573, y: -0.1679122}
-  serializedVersion: 2
-  m_Radius: 0.073728636
+  m_Radius: 0.1826108
 --- !u!1 &6280787786663896904
 GameObject:
   m_ObjectHideFlags: 0
