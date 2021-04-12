@@ -39,8 +39,9 @@ public class Gumball : MonoBehaviour
                 createSplash(new Vector2(transform.position.x - rb.velocity.x * dTime, transform.position.y - rb.velocity.y * dTime));// move back one tick for collision purposes
             }
             Destroy(gameObject);
+            FindObjectOfType<SoundManager>().Play("Hit");
         }
-        FindObjectOfType<SoundManager>().Play("Hit");
+
         if(collision.tag == "Enemy") {
             //collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             collision.GetComponent<Enemy>().Damage();

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1019857583447143778}
   - component: {fileID: 1019857583447143781}
   - component: {fileID: 1019857583447143780}
-  m_Layer: 0
+  - component: {fileID: 475399429459343919}
+  m_Layer: 9
   m_Name: LightPlaceholder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -111,7 +112,7 @@ MonoBehaviour:
   splat: 0
   timeStuck: 0
   timeDestroy: 5
-  wanderTime: 4
+  wanderTime: 5
   stillTime: 0.5
   attackStrength: 50
   timeBetweenAttacks: 5
@@ -145,11 +146,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 1019857583447143785}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3cdd7e5cd0b1ad04cad4811e2880e4f3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03748482, y: -0.14754677}
+  m_Offset: {x: 0.037484825, y: -0.15359244}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,9 +159,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.17484587, y: 0.024906456}
+  m_Size: {x: 0.17484587, y: 0.012815103}
   m_EdgeRadius: 0
 --- !u!58 &1019857583447143780
 CircleCollider2D:
@@ -178,6 +179,22 @@ CircleCollider2D:
   m_Offset: {x: 0.042270135, y: -0.073374666}
   serializedVersion: 2
   m_Radius: 0.0874228
+--- !u!58 &475399429459343919
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019857583447143785}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04491062, y: -0.0777298}
+  serializedVersion: 2
+  m_Radius: 0.0684515
 --- !u!1 &7792202838197200609
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841575598626839047}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

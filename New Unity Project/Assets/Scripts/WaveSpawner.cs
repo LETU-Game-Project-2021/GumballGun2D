@@ -33,6 +33,7 @@ public class WaveSpawner : MonoBehaviour
             waveTime += Time.deltaTime;
             if (waveTime > spawnRate) {
                 waveTime = 0f;
+                spawnRate = Random.Range(3, 7);
                 SpawnWaveEnemy();
             }
 
