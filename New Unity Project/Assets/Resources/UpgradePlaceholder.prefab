@@ -115,12 +115,12 @@ MonoBehaviour:
   tempActive: 0
   openMenuTime: 0
   powerUpMenuImages:
-  - {fileID: 21300000, guid: 483c48d21b1273843888dcf1ad6bde33, type: 3}
+  - {fileID: 21300000, guid: 80881fde2d5dacf4d8e743a15dc01ad4, type: 3}
   - {fileID: 21300000, guid: ba35a75c40a9c8c419c5c015d339d8a3, type: 3}
-  - {fileID: 21300000, guid: 5c36fcf3c860cda44866b8b5781bedf8, type: 3}
-  - {fileID: 21300000, guid: 3b8625c8f31a220439042972ece49ab3, type: 3}
+  - {fileID: 21300000, guid: 8fca4c8784982304289b01d72473a9fe, type: 3}
+  - {fileID: 21300000, guid: 87dc21afe2cb2604383ba4a4b4ac89f5, type: 3}
   - {fileID: 21300000, guid: 27f06e99acdfda54baa1f911c241af0e, type: 3}
-  - {fileID: 21300000, guid: 9bdb4c496e0aac348b047ada358ab752, type: 3}
+  - {fileID: 21300000, guid: 5b9d90a32a452b344a5087e2f1448f4f, type: 3}
   - {fileID: 21300000, guid: 9356dadf15dabec4a9ee4ecd17ba6985, type: 3}
   - {fileID: 21300000, guid: c0ddf8fba1d4c9a45afaf5a54e450630, type: 3}
   powerUpActiveImages:

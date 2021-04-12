@@ -7,6 +7,7 @@ public class Upgrader : MonoBehaviour
 {
     public bool permanent;
     public static float timer = 15;
+    public static bool menuIsOpen = false;
     public bool tempActive = false;
     public float openMenuTime;
     public Sprite[] powerUpMenuImages;
@@ -38,9 +39,9 @@ public class Upgrader : MonoBehaviour
         timerBarSize = timerMeter.rectTransform.sizeDelta;
         timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
         if(permanent) {
-            createPowerups();
+            //createPowerups();
             menu = GameObject.Find("PowerUp Menu");
-            loadMenu();
+            //loadMenu();
         }
     }
 
@@ -128,7 +129,7 @@ public class Upgrader : MonoBehaviour
         StartCoroutine(indicatorFloat(msg));
     }
 
-    private void createPowerups() {
+    /*private void createPowerups() {
         powerups.Add(new PowerUp("doubleJump",   1, powerUpMenuImages[0], powerUpActiveImages[0], "Allows you to perform an additional jump mid-air", this));
         powerups.Add(new PowerUp("jetpack",      1, powerUpMenuImages[1], powerUpActiveImages[1], "Allows you to fly through the sky (hold jump key)", this));
         powerups.Add(new PowerUp("automatic",    1, powerUpMenuImages[2], powerUpActiveImages[2], "Fire a continuous stream of gumballs (click and hold)", this));
@@ -146,7 +147,7 @@ public class Upgrader : MonoBehaviour
             menu.transform.GetChild(2 * i + 1).GetComponent<Text>().text = "Cost: " + powerups[i].cost;
         }
         menu.transform.position = transform.position;
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
@@ -158,6 +159,9 @@ public class Upgrader : MonoBehaviour
                 collision.gameObject.GetComponent<Player>().upgradeT = true;
                 collision.gameObject.GetComponent<Player>().upgraderTemp = this;
             }
+        }
+        if(permanent) {
+            menu.transform.position = transform.position;
         }
     }
 
@@ -224,13 +228,18 @@ public class Upgrader : MonoBehaviour
     }
 
     public IEnumerator openBuyMenu(bool opening) {
+        if(!opening)
+            Time.timeScale = 1;
         float startTime = Time.time;
         float ratio = 0;
         while(Time.time - startTime < openMenuTime) {
-            ratio = (opening ? (Time.time-startTime)/openMenuTime : (1 - Time.time + startTime)/openMenuTime);
+            ratio = (opening ? (Time.time-startTime)/openMenuTime : 1 - (Time.time - startTime)/openMenuTime);
             menu.transform.localScale = new Vector3(ratio, ratio, 1);
             yield return 0;
         }
         menu.transform.localScale = (opening ? new Vector3(1, 1, 1) : new Vector3(0, 0, 1));
+        menuIsOpen = opening;
+        if(opening)
+            Time.timeScale = 0;
     }
 }
