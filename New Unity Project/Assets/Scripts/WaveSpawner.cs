@@ -7,25 +7,52 @@ public class WaveSpawner : MonoBehaviour
     public Gamemanager gameManager;
     public GameObject[] enemy;
     public int nestsDestroyed;
+    public float waveLength = 15f;
+    public bool spawn = false;
+    private float waveTime;
+    private float spawnRate;
+    
 
     private void Start()
     {
-        nestsDestroyed = gameManager.GetComponent<Gamemanager>().nestsDestroyed;
+        //nestsDestroyed = gameManager.GetComponent<Gamemanager>().nestsDestroyed;
         gameManager = FindObjectOfType<Gamemanager>();
+        spawnRate = Random.Range(1, 5);
     }
 
     private void FixedUpdate()
     {
-        if (nestsDestroyed != gameManager.GetComponent<Gamemanager>().nestsDestroyed) {
-            nestsDestroyed = gameManager.GetComponent<Gamemanager>().nestsDestroyed;
-            SpawnWave();
+        //if (nestsDestroyed != gameManager.GetComponent<Gamemanager>().nestsDestroyed) {
+        //    nestsDestroyed = gameManager.GetComponent<Gamemanager>().nestsDestroyed;
+        //    SpawnWave();
+        //}
+
+        if (spawn)
+        {
+            waveLength -= Time.deltaTime;
+            waveTime += Time.deltaTime;
+            if (waveTime > spawnRate) {
+                waveTime = 0f;
+                SpawnWaveEnemy();
+            }
+
+            if (waveLength <= 0) {
+                spawn = false;
+                waveLength = 15f;
+                waveTime = 0f;
+            }
         }
-       
     }
 
-    private void SpawnWave() {
-        int rand = Random.Range(0, 1);
+    public void SpawnWave() {
+        
         FindObjectOfType<SoundManager>().Play("Wave Spawner");
+        spawn = true;
+
+    }
+
+    private void SpawnWaveEnemy() {
+        int rand = Random.Range(0, 1);
         enemy[rand].GetComponent<Enemy>().target = gameManager.gameObject.GetComponent<Gamemanager>().portalLocation.gameObject;
         Instantiate(enemy[rand], transform.position, Quaternion.identity);
     }

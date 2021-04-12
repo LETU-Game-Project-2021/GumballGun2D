@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed2794e22d13f447a47e03d59d8c89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 4.5
+  spawnRate: 5
   enemy: {fileID: 1019857583447143785, guid: ab6655b674821a94380a2dc979d7bae6, type: 3}
   gameManger: {fileID: 7112828088125086607, guid: fcb7ed4098328e540ba1a680eb53a071,
     type: 3}

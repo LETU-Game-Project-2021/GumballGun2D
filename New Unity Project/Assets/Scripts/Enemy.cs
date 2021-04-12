@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
                 break;
             case 1:
                 eHealth = 2;
-                speed = 1;
+                speed = 1.75f;
                 break;
             case 2:
                 eHealth = 1;
