@@ -71,8 +71,10 @@ public class Player : MonoBehaviour
         else if(upgradeP) {
             //bring up buy menu
             //but for now I'll pick a random one for testing and charge one coin
-            string[] tempUpgradeList = { "doubleJump", "jetpack", "automatic", "spray", "burst", "extraDrill", "shotCount", "drillSpeedUp" };
-            upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)],1);
+            //string[] tempUpgradeList = { "doubleJump", "jetpack", "automatic", "spray", "burst", "extraDrill", "shotCount", "drillSpeedUp" };
+            //upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)],1);
+
+            StartCoroutine(upgraderPerm.openBuyMenu(!Upgrader.menuIsOpen));
         }
         else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
             if(!upgraderTemp.tempActive) {
