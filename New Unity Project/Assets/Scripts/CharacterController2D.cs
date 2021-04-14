@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
@@ -66,6 +68,7 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             m_Grounded = false;
             FindObjectOfType<SoundManager>().Play("Jump");
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             this.GetComponent<Player>().remainingJumps--;
         }
