@@ -17,6 +17,7 @@ public class Nest : MonoBehaviour
 
     private void Start()
     {
+        gameManger = FindObjectOfType<Gamemanager>().gameObject;
         gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;
     }
 
