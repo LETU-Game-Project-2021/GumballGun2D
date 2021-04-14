@@ -12,6 +12,7 @@ public class Upgrader: MonoBehaviour
     public float openMenuTime;
     public Sprite[] powerUpMenuImages;
     public Sprite[] powerUpActiveImages;
+    public static bool enhanceBreak;
 
     Weapon gun;
     Player player;
@@ -42,6 +43,7 @@ public class Upgrader: MonoBehaviour
             menu = GameObject.Find("PowerUp Menu");
             //loadMenu();
         }
+        enhanceBreak = true;
     }
 
     //select and apply lasting upgrades
@@ -175,7 +177,6 @@ public class Upgrader: MonoBehaviour
         }
     }
 
-    public bool enhanceBreak = true;//yeah this is weird, I know
     IEnumerator enhancementTimer(int status, bool prevSplash) {
         float startTime = Time.time;
         PowerUp.waiting = true;

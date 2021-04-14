@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
 
     private void Attack(GameObject player) {
         if(!stuck) {
-            player.GetComponent<Rigidbody2D>().AddForce((player.transform.position - gameObject.GetComponent<CircleCollider2D>().transform.position) * attackStrength + new Vector3(0, 2, 0), ForceMode2D.Impulse);
+            player.GetComponent<Rigidbody2D>().AddForce(Vector3.Scale((player.transform.position - gameObject.GetComponent<CircleCollider2D>().transform.position) * attackStrength + new Vector3(0, 5, 0), new Vector3(1,.2f,1)), ForceMode2D.Impulse);
             player.GetComponent<Player>().stun();
         }
     }

@@ -32,7 +32,7 @@ public class PowerUp : MonoBehaviour
     }
 
     public void buy() {
-        upgrader.enhanceBreak = false;
+        Upgrader.enhanceBreak = false;
         StartCoroutine(waitForEnhancementClear());
     }
 
@@ -49,7 +49,7 @@ public class PowerUp : MonoBehaviour
             yield return 0;
         }
         upgrader.getPermanentEnhancement(keyword, cost);
-        upgrader.enhanceBreak = true;
+        Upgrader.enhanceBreak = true;
         StartCoroutine(upgrader.openBuyMenu(false));
     }
 }

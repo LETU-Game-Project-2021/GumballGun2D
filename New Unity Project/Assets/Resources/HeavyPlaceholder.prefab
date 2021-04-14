@@ -108,14 +108,14 @@ MonoBehaviour:
     m_Bits: 0
   stuck: 0
   fly: 0
-  target: {fileID: 697746824954844854, guid: a76640b3509b38d429f8dc3936f2a3a2, type: 3}
+  target: {fileID: 0}
   splat: 0
   timeStuck: 0
   timeDestroy: 7
   wanderTime: 0
   stillTime: 0
-  attackStrength: 120
-  timeBetweenAttacks: 8
+  attackStrength: 80
+  timeBetweenAttacks: 3
 --- !u!58 &2552626269686977512
 CircleCollider2D:
   m_ObjectHideFlags: 0

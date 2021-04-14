@@ -115,7 +115,7 @@ MonoBehaviour:
   wanderTime: 6
   stillTime: 0.5
   attackStrength: 50
-  timeBetweenAttacks: 5
+  timeBetweenAttacks: 1
 --- !u!50 &1019857583447143778
 Rigidbody2D:
   serializedVersion: 4
