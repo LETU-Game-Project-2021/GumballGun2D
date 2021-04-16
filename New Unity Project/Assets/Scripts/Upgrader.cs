@@ -24,7 +24,7 @@ public class Upgrader: MonoBehaviour
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
     private GameObject hud;
-    private List<PowerUp> powerups = new List<PowerUp>();
+    //private List<PowerUp> powerups = new List<PowerUp>();
     private GameObject menu;
     private List<TaggedImage> activeImages;
     private List<Image> activeImagesOnscreen;
@@ -147,6 +147,14 @@ public class Upgrader: MonoBehaviour
     private void applyActives(pupChange[] changes) {
         foreach(pupChange change in changes) {
             if(change.activate) {
+                for(int i = 0; i < activeImages.Count; i++) {
+                    if(activeImages[i].tag == change.keyword) {
+                        activeImages.RemoveAt(i);
+                        Destroy(activeImagesOnscreen[i].gameObject);
+                        activeImagesOnscreen.RemoveAt(i);
+                        i--;
+                    }
+                }
                 activeImages.Add(new TaggedImage(powerUpActiveImages[change.id], change.keyword));
             }
             else {
@@ -234,6 +242,8 @@ public class Upgrader: MonoBehaviour
     public IEnumerator openBuyMenu(bool opening) {
         if(!opening)
             Time.timeScale = 1;
+        else
+            menu.transform.GetChild(0).GetComponent<PowerUp>().select();
         float startTime = Time.time;
         float ratio = 0;
         while(Time.time - startTime < openMenuTime) {

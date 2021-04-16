@@ -26,6 +26,8 @@ public class PowerUp : MonoBehaviour
     public void buy() {
         Upgrader.enhanceBreak = false;
         StartCoroutine(waitForEnhancementClear());
+        cost = 0;
+        textbox.text = "Bought";
     }
 
     public void select() {
@@ -34,6 +36,7 @@ public class PowerUp : MonoBehaviour
         buyBtn.onClick.AddListener(delegate{
             buy();
         });
+        buyBtn.GetComponentInChildren<Text>().text = (textbox.text=="Bought"?"Apply":"Buy");
     }
 
     IEnumerator waitForEnhancementClear() {
