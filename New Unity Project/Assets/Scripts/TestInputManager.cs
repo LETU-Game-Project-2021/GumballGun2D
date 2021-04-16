@@ -24,6 +24,10 @@ public class TestInputManager : MonoBehaviour
             Debug.Log("Heavy Hose");
             gun.applyMod("heavyHose");
         }
+        if(Input.GetKeyDown(KeyCode.Alpha2)) {
+            Debug.Log("+10 coins");
+            player.changeCoin(10);
+        }
         /*if(Input.GetKeyDown(KeyCode.Alpha1)) {
             Debug.Log("Default");
             gun.applyMod("default");

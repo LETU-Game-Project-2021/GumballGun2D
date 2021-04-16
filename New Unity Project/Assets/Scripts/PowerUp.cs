@@ -16,14 +16,6 @@ public class PowerUp : MonoBehaviour
     private Text descriptionBox;
     public Button buyBtn;
 
-    /*public PowerUp(string upgradeWord, int coins, Sprite menu, Sprite active, string text, Upgrader parent) {
-        menuImg = menu;
-        activeImg = active;
-        cost = coins;
-        description = text;
-        keyword = upgradeWord;
-        upgrader = parent;
-    }*/
     private void Start() {
         this.GetComponentInParent<Image>().sprite = menuImg;
         descriptionBox = GameObject.Find("PowerUpDescription").GetComponent<Text>();
