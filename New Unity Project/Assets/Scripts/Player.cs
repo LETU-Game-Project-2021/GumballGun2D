@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public bool drillPickup = false;
     public int coins;
     public bool stunned = false;
-    private float stunTime = 3;
+    private float stunTime = 2;
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();

@@ -60,7 +60,7 @@ public class Upgrader: MonoBehaviour
         string indicator = "";
         switch(selection) {
             case "doubleJump":
-                player.totalJumps++;
+                player.totalJumps = 2;
                 player.remainingJumps = player.totalJumps;
                 player.jetpack = false;
                 indicator = "Double jump";
@@ -88,18 +88,18 @@ public class Upgrader: MonoBehaviour
                 applyActives(new pupChange[] { new pupChange("burst", 4, true), new pupChange("automatic", 4, false), new pupChange("shotgun", 4, false) });
                 break;
             case "extraDrill":
-                player.availableDrills++;
-                player.totalDrills++;
+                player.availableDrills = Mathf.Min(player.availableDrills+1,2);
+                player.totalDrills = 2;
                 indicator = "Extra drill";
                 applyActives(new pupChange[] { new pupChange("extraDrill", 5, true) });
                 break;
             case "shotCount":
-                gun.alterMod("shots", gun.permanentMods.shots + 3, true);
+                gun.alterMod("shots", 5, true);
                 indicator = "Extra shots";
                 applyActives(new pupChange[] { new pupChange("shots", 6, true) });
                 break;
             case "drillSpeedUp":
-                Nest.drillTime *= .7f;
+                Nest.drillTime = 7;
                 indicator = "Drill speed up";
                 applyActives(new pupChange[] { new pupChange("drillSpeedUp", 7, true) });
                 break;

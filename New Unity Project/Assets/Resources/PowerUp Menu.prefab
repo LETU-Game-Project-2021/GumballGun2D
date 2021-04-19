@@ -223,7 +223,7 @@ MonoBehaviour:
   menuImg: {fileID: 0}
   activeImg: {fileID: 0}
   textbox: {fileID: 5623862240772864529}
-  cost: 2
+  cost: 7
   description: Allows you to fly through the sky (hold jump key)
   keyword: jetpack
   upgrader: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   menuImg: {fileID: 0}
   activeImg: {fileID: 0}
   textbox: {fileID: 5623862241161535957}
-  cost: 7
+  cost: 2
   description: Increases the number of gumballs in "spray" and "burst" modes
   keyword: shotCount
   upgrader: {fileID: 0}
@@ -523,7 +523,7 @@ MonoBehaviour:
   menuImg: {fileID: 21300000, guid: 87dc21afe2cb2604383ba4a4b4ac89f5, type: 3}
   activeImg: {fileID: 21300000, guid: 87dc21afe2cb2604383ba4a4b4ac89f5, type: 3}
   textbox: {fileID: 5623862239313463203}
-  cost: 4
+  cost: 9
   description: Spray a cluster of gumballs with each shot
   keyword: spray
   upgrader: {fileID: 0}
@@ -751,7 +751,7 @@ MonoBehaviour:
   menuImg: {fileID: 0}
   activeImg: {fileID: 0}
   textbox: {fileID: 5623862239663113710}
-  cost: 8
+  cost: 3
   description: Decreases the time required to drill a nest
   keyword: drillSpeedUp
   upgrader: {fileID: 0}
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   menuImg: {fileID: 0}
   activeImg: {fileID: 0}
   textbox: {fileID: 5623862241247991385}
-  cost: 5
+  cost: 9
   description: Rapidly fire multiple gumballs with each shot
   keyword: burst
   upgrader: {fileID: 0}
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   menuImg: {fileID: 21300000, guid: 80881fde2d5dacf4d8e743a15dc01ad4, type: 3}
   activeImg: {fileID: 21300000, guid: 80881fde2d5dacf4d8e743a15dc01ad4, type: 3}
   textbox: {fileID: 5623862241000831087}
-  cost: 1
+  cost: 5
   description: Allows you to perform an additional jump mid-air
   keyword: doubleJump
   upgrader: {fileID: 0}
@@ -1677,7 +1677,7 @@ MonoBehaviour:
   menuImg: {fileID: 21300000, guid: 8fca4c8784982304289b01d72473a9fe, type: 3}
   activeImg: {fileID: 21300000, guid: 8fca4c8784982304289b01d72473a9fe, type: 3}
   textbox: {fileID: 5623862240126550784}
-  cost: 3
+  cost: 12
   description: Fire a continuous stream of gumballs (click and hold)
   keyword: automatic
   upgrader: {fileID: 0}
