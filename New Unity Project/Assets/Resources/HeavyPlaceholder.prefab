@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2552626269686977512}
   - component: {fileID: 2552626269686977519}
   - component: {fileID: 2552626269686977518}
+  - component: {fileID: 4204044885946624042}
   m_Layer: 0
   m_Name: HeavyPlaceholder
   m_TagString: Enemy
@@ -178,6 +179,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &4204044885946624042
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552626269686977517}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2b69fb0364b19248924687d5b29c156, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6280787786663896904
 GameObject:
   m_ObjectHideFlags: 0
