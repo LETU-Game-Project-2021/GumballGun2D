@@ -161,8 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1137297023}
-  shiftDistX: 0
-  shiftDistY: 0
   shiftTime: 0.2
 --- !u!20 &519420031
 Camera:

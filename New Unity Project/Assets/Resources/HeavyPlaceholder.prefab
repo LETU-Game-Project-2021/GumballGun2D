@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2552626269686977512}
   - component: {fileID: 2552626269686977519}
   - component: {fileID: 2552626269686977518}
-  - component: {fileID: 4204044885946624042}
   m_Layer: 0
   m_Name: HeavyPlaceholder
   m_TagString: Enemy
@@ -179,6 +178,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+<<<<<<< HEAD
 --- !u!95 &4204044885946624042
 Animator:
   serializedVersion: 3
@@ -208,6 +208,8 @@ CircleCollider2D:
   m_Offset: {x: -0.0016524077, y: -0.13527112}
   serializedVersion: 2
   m_Radius: 0.1826108
+=======
+>>>>>>> parent of 2b51bf3 (Adding walking animations)
 --- !u!1 &6280787786663896904
 GameObject:
   m_ObjectHideFlags: 0
