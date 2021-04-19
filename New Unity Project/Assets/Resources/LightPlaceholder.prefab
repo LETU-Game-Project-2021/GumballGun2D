@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 1019857583447143778}
   - component: {fileID: 1019857583447143781}
   - component: {fileID: 1019857583447143780}
-  - component: {fileID: 475399429459343919}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: LightPlaceholder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,6 +178,10 @@ CircleCollider2D:
   m_Offset: {x: 0.042270135, y: -0.073374666}
   serializedVersion: 2
   m_Radius: 0.0874228
+<<<<<<< HEAD
+--- !u!95 &4059876224899936508
+Animator:
+  serializedVersion: 3
 --- !u!58 &475399429459343919
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -187,6 +190,16 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019857583447143785}
   m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dad34bd436f1a834a90b99e88bf7b3fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -195,6 +208,8 @@ CircleCollider2D:
   m_Offset: {x: 0.04491062, y: -0.0777298}
   serializedVersion: 2
   m_Radius: 0.0684515
+=======
+>>>>>>> parent of 2b51bf3 (Adding walking animations)
 --- !u!1 &7792202838197200609
 GameObject:
   m_ObjectHideFlags: 0
