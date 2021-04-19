@@ -14,7 +14,7 @@ public class Gamemanager : MonoBehaviour
     public GameObject barrier;
 	public LevelComplete completed;
     public int roomNumber = 0;
-    public GameObject arrow;
+    public GameObject[] arrow;
     public Transform position1;
     public Transform position2;
 
@@ -38,8 +38,10 @@ public class Gamemanager : MonoBehaviour
         //stop waves and move to the next room
         nestsDestroyed = 0;
         totalNests = 0;
+        arrow[roomNumber].SetActive(true);
         roomNumber++;
         Debug.Log("Nests Destroyed!");
+
         switch (roomNumber) {
             case 1:
                 barrier.transform.position = position1.position;
@@ -47,9 +49,10 @@ public class Gamemanager : MonoBehaviour
             case 2:
                 barrier.transform.position = position2.position;
                 break;
+            case 3:
+                Destroy(barrier.gameObject);
+                break;
         }
-        arrow.SetActive(true);
-
 		//completed.GameComplete();
 		
     }

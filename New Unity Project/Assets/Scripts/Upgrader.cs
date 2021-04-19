@@ -89,6 +89,7 @@ public class Upgrader: MonoBehaviour
                 break;
             case "extraDrill":
                 player.availableDrills++;
+                player.totalDrills++;
                 indicator = "Extra drill";
                 applyActives(new pupChange[] { new pupChange("extraDrill", 5, true) });
                 break;

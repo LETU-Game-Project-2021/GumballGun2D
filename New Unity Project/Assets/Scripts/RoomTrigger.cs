@@ -16,12 +16,16 @@ public class RoomTrigger : MonoBehaviour
         if (collision.tag == "Player") {
 
             for (int i = 0; i < nests.Length; i++) {
-                Instantiate(nestObject, nests[i].position, Quaternion.identity);
+                Instantiate(nestObject, new Vector3(nests[i].position.x, nests[i].position.y, 0), Quaternion.identity);
             }
             for (int i = 0; i < spawnerLocations.Length; i++) {
                 Instantiate(waveObject, spawnerLocations[i].position, Quaternion.identity);
             }
             Instantiate(barrierObject, backBarrier, true);
+            FindObjectOfType<Gamemanager>().roomComplete = false;
+            if (collision.GetComponent<Player>().availableDrills != collision.GetComponent<Player>().totalDrills) {
+                collision.GetComponent<Player>().availableDrills = collision.GetComponent<Player>().totalDrills;
+            }
             Destroy(this.gameObject);
         }
     }

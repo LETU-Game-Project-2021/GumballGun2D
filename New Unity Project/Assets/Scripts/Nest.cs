@@ -19,6 +19,7 @@ public class Nest : MonoBehaviour
     {
         gameManger = FindObjectOfType<Gamemanager>().gameObject;
         gameManger.gameObject.GetComponent<Gamemanager>().totalNests++;
+        spawnRate = Random.Range(4f, 7f);
     }
 
     private void Update()
@@ -29,6 +30,7 @@ public class Nest : MonoBehaviour
         {
 
             lastSpawn = 0f;
+            spawnRate = Random.Range(4f, 7f);
             spawnEnemy();
 
         }

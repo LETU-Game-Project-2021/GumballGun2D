@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public Upgrader upgraderPerm;
     public Text coinCounter;
     public int availableDrills = 1;
+    public int totalDrills = 1;
     public int totalJumps = 1;
     public int remainingJumps = 0;
     public bool jetpack = false;
