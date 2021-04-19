@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1eb09b0b05f299845872c508681afc54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,12 +100,20 @@ MonoBehaviour:
   eHealth: 0
   enemyType: 2
   speed: 2
+  wallCheck: {fileID: 0}
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
   stuck: 0
   fly: 1
   target: {fileID: 697746824954844854, guid: a76640b3509b38d429f8dc3936f2a3a2, type: 3}
   splat: 0
   timeStuck: 0
   timeDestroy: 5
+  wanderTime: 0
+  stillTime: 0
+  attackStrength: 0
+  timeBetweenAttacks: 0
 --- !u!58 &1289169968155690684
 CircleCollider2D:
   m_ObjectHideFlags: 0

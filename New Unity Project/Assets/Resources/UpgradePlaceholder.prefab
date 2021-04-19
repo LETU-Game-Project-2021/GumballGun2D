@@ -124,13 +124,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9356dadf15dabec4a9ee4ecd17ba6985, type: 3}
   - {fileID: 21300000, guid: c0ddf8fba1d4c9a45afaf5a54e450630, type: 3}
   powerUpActiveImages:
-  - {fileID: 21300000, guid: 83e4dba5717e598428a8099943343948, type: 3}
+  - {fileID: 21300000, guid: 80881fde2d5dacf4d8e743a15dc01ad4, type: 3}
   - {fileID: 21300000, guid: c2a34834e08ac6b47a83c830fe68e7f6, type: 3}
-  - {fileID: 21300000, guid: e69151974162fa44eb5be17bfa917261, type: 3}
-  - {fileID: 21300000, guid: 1a73e387a25b1af45af3ca159b5dd6c6, type: 3}
+  - {fileID: 21300000, guid: 8fca4c8784982304289b01d72473a9fe, type: 3}
+  - {fileID: 21300000, guid: 87dc21afe2cb2604383ba4a4b4ac89f5, type: 3}
   - {fileID: 21300000, guid: 65321c51d80619e43bf6a89dd4d74edd, type: 3}
-  - {fileID: 21300000, guid: 17ba437ba9e759844ab58e2e49b0e527, type: 3}
+  - {fileID: 21300000, guid: 5b9d90a32a452b344a5087e2f1448f4f, type: 3}
   - {fileID: 21300000, guid: b8e70f4e65497ae41b38c7e3f613f19b, type: 3}
   - {fileID: 21300000, guid: c9520e91fff62f94db98d325088b1f20, type: 3}
   tempUpgradeCost: 0
-  enhanceBreak: 1

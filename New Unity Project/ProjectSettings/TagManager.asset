@@ -19,10 +19,10 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Barrier
+  - Stuck
+  - Gum
   - 
   - 
   - 

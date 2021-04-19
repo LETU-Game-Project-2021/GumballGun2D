@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2797671378634369126}
   - component: {fileID: 318776298115587585}
   - component: {fileID: 2230930210942432843}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gumball
   m_TagString: Gum
   m_Icon: {fileID: 0}

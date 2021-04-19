@@ -108,14 +108,14 @@ MonoBehaviour:
     m_Bits: 0
   stuck: 0
   fly: 0
-  target: {fileID: 697746824954844854, guid: a76640b3509b38d429f8dc3936f2a3a2, type: 3}
+  target: {fileID: 0}
   splat: 0
   timeStuck: 0
-  timeDestroy: 10
+  timeDestroy: 7
   wanderTime: 0
   stillTime: 0
-  attackStrength: 120
-  timeBetweenAttacks: 8
+  attackStrength: 80
+  timeBetweenAttacks: 3
 --- !u!58 &2552626269686977512
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.050935008, y: -0.30869693}
+  m_Offset: {x: -0.050935, y: -0.239559}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -156,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5072602, y: 0.022606134}
+  m_Size: {x: 0.5072602, y: 0.16088201}
   m_EdgeRadius: 0
 --- !u!50 &2552626269686977518
 Rigidbody2D:
@@ -182,6 +182,8 @@ Rigidbody2D:
 --- !u!95 &4204044885946624042
 Animator:
   serializedVersion: 3
+--- !u!58 &5376570436483074838
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -198,6 +200,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0016524077, y: -0.13527112}
+  serializedVersion: 2
+  m_Radius: 0.1826108
 --- !u!1 &6280787786663896904
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005253686488946054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

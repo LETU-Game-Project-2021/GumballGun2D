@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Upgrader : MonoBehaviour
+public class Upgrader: MonoBehaviour
 {
     public bool permanent;
     public static float timer = 15;
@@ -12,6 +12,8 @@ public class Upgrader : MonoBehaviour
     public float openMenuTime;
     public Sprite[] powerUpMenuImages;
     public Sprite[] powerUpActiveImages;
+    public static bool enhanceBreak;
+    public int tempUpgradeCost;
 
     Weapon gun;
     Player player;
@@ -21,28 +23,33 @@ public class Upgrader : MonoBehaviour
     private Vector2 timerBarSize;
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
-    public int tempUpgradeCost;
-    private List<PowerUp> powerups = new List<PowerUp>();
+    private GameObject hud;
+    //private List<PowerUp> powerups = new List<PowerUp>();
     private GameObject menu;
+    private List<TaggedImage> activeImages;
+    private List<Image> activeImagesOnscreen;
+    private Vector2 activeBasePosition = new Vector2(141.25f, -257.7f);
+    private float activeOffset = 40;
 
     private float runSpeedScale = 1.7f;
     private float stuckRateScale = 2;
     private float fireRateScale = 1.5f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         gun = GameObject.FindObjectOfType<Weapon>();
         player = GameObject.FindObjectOfType<Player>();
         cam = GameObject.FindObjectOfType<Camera>();
+        hud = GameObject.Find("HudCanvas");
         timerMeter = GameObject.Find("UpgradeMeterInner").GetComponent<Image>();
         timerBarSize = timerMeter.rectTransform.sizeDelta;
         timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
+        activeImages = new List<TaggedImage>();
+        activeImagesOnscreen = new List<Image>();
         if(permanent) {
-            //createPowerups();
             menu = GameObject.Find("PowerUp Menu");
-            //loadMenu();
         }
+        enhanceBreak = true;
     }
 
     //select and apply lasting upgrades
@@ -57,35 +64,44 @@ public class Upgrader : MonoBehaviour
                 player.remainingJumps = player.totalJumps;
                 player.jetpack = false;
                 indicator = "Double jump";
+                applyActives(new pupChange[] { new pupChange("doubleJump", 0, true), new pupChange("jetpack", 0, false) });
                 break;
             case "jetpack":
                 player.totalJumps = 1;
                 player.jetpack = true;
                 indicator = "Jetpack";
+                applyActives(new pupChange[] { new pupChange("jetpack", 1, true), new pupChange("doubleJump", 1, false) });
                 break;
             case "automatic":
                 gun.applyMod("machinegun");
                 indicator = "Automatic";
+                applyActives(new pupChange[] { new pupChange("automatic", 2, true), new pupChange("shotgun", 2, false), new pupChange("burst", 2, false) });
                 break;
             case "spray":
                 gun.applyMod("shotgun");
                 indicator = "Shotgun";
+                applyActives(new pupChange[] { new pupChange("shotgun", 3, true), new pupChange("automatic", 3, false), new pupChange("burst", 3, false) });
                 break;
             case "burst":
                 gun.applyMod("burst");
                 indicator = "Burst";
+                applyActives(new pupChange[] { new pupChange("burst", 4, true), new pupChange("automatic", 4, false), new pupChange("shotgun", 4, false) });
                 break;
             case "extraDrill":
                 player.availableDrills++;
+                player.totalDrills++;
                 indicator = "Extra drill";
+                applyActives(new pupChange[] { new pupChange("extraDrill", 5, true) });
                 break;
             case "shotCount":
                 gun.alterMod("shots", gun.permanentMods.shots + 3, true);
                 indicator = "Extra shots";
+                applyActives(new pupChange[] { new pupChange("shots", 6, true) });
                 break;
             case "drillSpeedUp":
                 Nest.drillTime *= .7f;
                 indicator = "Drill speed up";
+                applyActives(new pupChange[] { new pupChange("drillSpeedUp", 7, true) });
                 break;
         }
         player.changeCoin(-cost);
@@ -129,25 +145,38 @@ public class Upgrader : MonoBehaviour
         StartCoroutine(indicatorFloat(msg));
     }
 
-    /*private void createPowerups() {
-        powerups.Add(new PowerUp("doubleJump",   1, powerUpMenuImages[0], powerUpActiveImages[0], "Allows you to perform an additional jump mid-air", this));
-        powerups.Add(new PowerUp("jetpack",      1, powerUpMenuImages[1], powerUpActiveImages[1], "Allows you to fly through the sky (hold jump key)", this));
-        powerups.Add(new PowerUp("automatic",    1, powerUpMenuImages[2], powerUpActiveImages[2], "Fire a continuous stream of gumballs (click and hold)", this));
-        powerups.Add(new PowerUp("spray",        1, powerUpMenuImages[3], powerUpActiveImages[3], "Spray a cluster of gumballs with each shot", this));
-        powerups.Add(new PowerUp("burst",        1, powerUpMenuImages[4], powerUpActiveImages[4], "Rapidly fire multiple gumballs with each shot", this));
-        powerups.Add(new PowerUp("extraDrill",   1, powerUpMenuImages[5], powerUpActiveImages[5], "Allows an additional drill to be placed down", this));
-        powerups.Add(new PowerUp("shotCount",    1, powerUpMenuImages[6], powerUpActiveImages[6], "Increases the number of gumballs in \"spray\" and \"burst\" modes", this));
-        powerups.Add(new PowerUp("drillSpeedUp", 1, powerUpMenuImages[7], powerUpActiveImages[7], "Decreases the time required to drill a nest", this));
-    }
-
-    private void loadMenu() {
-        //int children = menu.transform.childCount-2;
-        for(int i=0;i<powerups.Count;i++) {
-            menu.transform.GetChild(2 * i).GetComponent<Image>().sprite = powerups[i].menuImg;
-            menu.transform.GetChild(2 * i + 1).GetComponent<Text>().text = "Cost: " + powerups[i].cost;
+    private void applyActives(pupChange[] changes) {
+        foreach(pupChange change in changes) {
+            if(change.activate) {
+                for(int i = 0; i < activeImages.Count; i++) {
+                    if(activeImages[i].tag == change.keyword) {
+                        activeImages.RemoveAt(i);
+                        Destroy(activeImagesOnscreen[i].gameObject);
+                        activeImagesOnscreen.RemoveAt(i);
+                        i--;
+                    }
+                }
+                activeImages.Add(new TaggedImage(powerUpActiveImages[change.id], change.keyword));
+            }
+            else {
+                for(int i = 0; i < activeImages.Count; i++) {
+                    if(activeImages[i].tag == change.keyword) {
+                        activeImages.RemoveAt(i);
+                        Destroy(activeImagesOnscreen[i].gameObject);
+                        activeImagesOnscreen.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
         }
-        menu.transform.position = transform.position;
-    }*/
+        //clear existing images from hud, add new ones at activeBasePositon + (activeOffset * index, 0)
+        for(int i = 0; i < activeImages.Count; i++) {
+            Image temp = (Instantiate(Resources.Load("ActivePowerUpTemplate"), hud.transform) as GameObject).GetComponent<Image>();
+            temp.sprite = activeImages[i].image;
+            temp.rectTransform.anchoredPosition = activeBasePosition + new Vector2(activeOffset * i, 0);
+            activeImagesOnscreen.Add(temp);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
@@ -176,7 +205,6 @@ public class Upgrader : MonoBehaviour
         }
     }
 
-    public bool enhanceBreak = true;//yeah this is weird, I know
     IEnumerator enhancementTimer(int status, bool prevSplash) {
         float startTime = Time.time;
         PowerUp.waiting = true;
@@ -203,21 +231,6 @@ public class Upgrader : MonoBehaviour
         PowerUp.waiting = false;
     }
 
-    /*IEnumerator enhancementTimer(float runSpeed, float jamLimit, float fireRate, bool splash) {
-        float startTime = Time.time;
-        while(Time.time - startTime < timer) {
-            float width = (timer-(Time.time-startTime)) / timer * timerBarSize.x;
-            timerMeter.rectTransform.sizeDelta = new Vector2(width, timerBarSize.y);
-            yield return 0;
-        }
-        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
-        player.runSpeed = runSpeed;
-        gun.restoreFraction(jamLimit);
-        gun.currentMod.rate = fireRate;
-        gun.currentMod.splash = splash;
-        tempActive = false;
-    }*/
-
     IEnumerator indicatorFloat(Text msg) {
         float startTime = Time.time;
         while(Time.time - startTime < indicatorTime) {
@@ -230,10 +243,12 @@ public class Upgrader : MonoBehaviour
     public IEnumerator openBuyMenu(bool opening) {
         if(!opening)
             Time.timeScale = 1;
+        else
+            menu.transform.GetChild(0).GetComponent<PowerUp>().select();
         float startTime = Time.time;
         float ratio = 0;
         while(Time.time - startTime < openMenuTime) {
-            ratio = (opening ? (Time.time-startTime)/openMenuTime : 1 - (Time.time - startTime)/openMenuTime);
+            ratio = (opening ? (Time.time - startTime) / openMenuTime : 1 - (Time.time - startTime) / openMenuTime);
             menu.transform.localScale = new Vector3(ratio, ratio, 1);
             yield return 0;
         }
@@ -241,5 +256,26 @@ public class Upgrader : MonoBehaviour
         menuIsOpen = opening;
         if(opening)
             Time.timeScale = 0;
+    }
+}
+
+public struct TaggedImage {
+    public Sprite image;
+    public string tag;
+    public TaggedImage(Sprite i, string t) {
+        image = i;
+        tag = t;
+    }
+}
+
+public struct pupChange
+{
+    public string keyword;
+    public int id;
+    public bool activate;
+    public pupChange(string keyword, int id, bool activate) {
+        this.keyword = keyword;
+        this.id = id;
+        this.activate = activate;
     }
 }

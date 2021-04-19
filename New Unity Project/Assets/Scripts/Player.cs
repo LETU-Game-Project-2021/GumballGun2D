@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public Upgrader upgraderPerm;
     public Text coinCounter;
     public int availableDrills = 1;
+    public int totalDrills = 1;
     public int totalJumps = 1;
     public int remainingJumps = 0;
     public bool jetpack = false;
@@ -60,33 +61,29 @@ public class Player : MonoBehaviour
     }
 
     private void playerUse() {
-
-        if(drill && availableDrills > 0) {
-            Drill drill = (Instantiate(drillObject, nest.transform.position, Quaternion.identity) as GameObject).GetComponent<Drill>();
-            FindObjectOfType<SoundManager>().Play("Drill Start");
-            availableDrills--;
-            nest.gameObject.GetComponent<Nest>().startDrill();
-            StartCoroutine(drill.displayTimer(Nest.drillTime));
-        }
-        else if(upgradeP) {
-            //bring up buy menu
-            //but for now I'll pick a random one for testing and charge one coin
-            //string[] tempUpgradeList = { "doubleJump", "jetpack", "automatic", "spray", "burst", "extraDrill", "shotCount", "drillSpeedUp" };
-            //upgraderPerm.getPermanentEnhancement(tempUpgradeList[Random.Range(0, tempUpgradeList.Length)],1);
-
-            StartCoroutine(upgraderPerm.openBuyMenu(!Upgrader.menuIsOpen));
-        }
-        else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
-            if(!upgraderTemp.tempActive) {
-                upgraderTemp.getTemporaryEnhancement();
-                changeCoin(-upgraderTemp.tempUpgradeCost);
-                FindObjectOfType<SoundManager>().Play("Gumball Machine");
+        if(!PauseMenu.GameIsPaused) {
+            if(drill && availableDrills > 0) {
+                Drill drill = (Instantiate(drillObject, nest.transform.position, Quaternion.identity) as GameObject).GetComponent<Drill>();
+                FindObjectOfType<SoundManager>().Play("Drill Start");
+                availableDrills--;
+                nest.gameObject.GetComponent<Nest>().startDrill();
+                StartCoroutine(drill.displayTimer(Nest.drillTime));
             }
-        }
-        else if(drillPickup) {
-            availableDrills++;
-            Destroy(currentDrill);
-            drillPickup = false;
+            else if(upgradeP) {
+                StartCoroutine(upgraderPerm.openBuyMenu(!Upgrader.menuIsOpen));
+            }
+            else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
+                if(!upgraderTemp.tempActive) {
+                    upgraderTemp.getTemporaryEnhancement();
+                    changeCoin(-upgraderTemp.tempUpgradeCost);
+                    FindObjectOfType<SoundManager>().Play("Gumball Machine");
+                }
+            }
+            else if(drillPickup) {
+                availableDrills++;
+                Destroy(currentDrill);
+                drillPickup = false;
+            }
         }
     }
 

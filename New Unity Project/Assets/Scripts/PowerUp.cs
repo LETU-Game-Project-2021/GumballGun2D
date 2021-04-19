@@ -16,14 +16,6 @@ public class PowerUp : MonoBehaviour
     private Text descriptionBox;
     public Button buyBtn;
 
-    /*public PowerUp(string upgradeWord, int coins, Sprite menu, Sprite active, string text, Upgrader parent) {
-        menuImg = menu;
-        activeImg = active;
-        cost = coins;
-        description = text;
-        keyword = upgradeWord;
-        upgrader = parent;
-    }*/
     private void Start() {
         this.GetComponentInParent<Image>().sprite = menuImg;
         descriptionBox = GameObject.Find("PowerUpDescription").GetComponent<Text>();
@@ -32,8 +24,10 @@ public class PowerUp : MonoBehaviour
     }
 
     public void buy() {
-        upgrader.enhanceBreak = false;
+        Upgrader.enhanceBreak = false;
         StartCoroutine(waitForEnhancementClear());
+        cost = 0;
+        textbox.text = "Bought";
     }
 
     public void select() {
@@ -42,6 +36,7 @@ public class PowerUp : MonoBehaviour
         buyBtn.onClick.AddListener(delegate{
             buy();
         });
+        buyBtn.GetComponentInChildren<Text>().text = (textbox.text=="Bought"?"Apply":"Buy");
     }
 
     IEnumerator waitForEnhancementClear() {
@@ -49,7 +44,7 @@ public class PowerUp : MonoBehaviour
             yield return 0;
         }
         upgrader.getPermanentEnhancement(keyword, cost);
-        upgrader.enhanceBreak = true;
+        Upgrader.enhanceBreak = true;
         StartCoroutine(upgrader.openBuyMenu(false));
     }
 }
