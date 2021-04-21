@@ -62,7 +62,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            if(!stuck)
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
         }
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(wallCheck.position, k_GroundedRadius, m_WhatIsGround);
