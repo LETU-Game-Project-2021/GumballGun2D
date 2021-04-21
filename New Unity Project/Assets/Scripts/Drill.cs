@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Drill : MonoBehaviour
 {
+    private void Start() {
+        transform.GetComponentInChildren<ParticleSystem>().Play();
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") {
@@ -39,5 +42,6 @@ public class Drill : MonoBehaviour
             yield return 0;
         }
         Destroy(bar.gameObject);
+        transform.GetComponentInChildren<ParticleSystem>().Stop();
     }
 }
