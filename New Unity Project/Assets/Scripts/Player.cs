@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public Upgrader upgraderTemp;
     public Upgrader upgraderPerm;
     public Text coinCounter;
+    private ParticleSystem particler;
     public int availableDrills = 1;
     public int totalDrills = 1;
     public int totalJumps = 1;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
+        particler = transform.GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -51,10 +53,16 @@ public class Player : MonoBehaviour
         else {
             horizontalMove = 0;
         }
+        if(Input.GetButtonUp("Jump")) {
+            particler.Stop();
+        }
     }
 
     void FixedUpdate()
     {
+        if(fly && jetpack && particler.isStopped) {
+            particler.Play();
+        }
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump, remainingJumps, fly, jetpack);
         jump = false;
         fly = false;
