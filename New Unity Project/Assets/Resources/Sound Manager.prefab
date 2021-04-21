@@ -110,3 +110,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - soundName: Theme2
+    clip: {fileID: 8300000, guid: f3f1fbce7479f564cb12b94d5108c9c3, type: 3}
+    volume: 0.402
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
