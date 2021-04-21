@@ -2925,6 +2925,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2743649953415301934, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
+        type: 3}
+      propertyPath: effects.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743649953415301934, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
+        type: 3}
+      propertyPath: effects.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f3f1fbce7479f564cb12b94d5108c9c3, type: 3}
+    - target: {fileID: 2743649953415301934, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
+        type: 3}
+      propertyPath: effects.Array.data[11].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743649953415301934, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
+        type: 3}
+      propertyPath: effects.Array.data[11].volume
+      value: 0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743649953415301934, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
+        type: 3}
+      propertyPath: effects.Array.data[11].soundName
+      value: Theme2
+      objectReference: {fileID: 0}
     - target: {fileID: 2743649953415301935, guid: 4787dfa9c5fa9d84e8d7d701e921d61c,
         type: 3}
       propertyPath: m_Name

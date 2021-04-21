@@ -6,6 +6,7 @@ public class RoomTrigger : MonoBehaviour
 {
     public Transform[] nests;
     public Transform backBarrier;
+    public Transform newPortalLoc;
     public Transform[] spawnerLocations;
     public GameObject nestObject;
     public GameObject barrierObject;
@@ -26,6 +27,7 @@ public class RoomTrigger : MonoBehaviour
             if (collision.GetComponent<Player>().availableDrills != collision.GetComponent<Player>().totalDrills) {
                 collision.GetComponent<Player>().availableDrills = collision.GetComponent<Player>().totalDrills;
             }
+            FindObjectOfType<Portal>().gameObject.transform.position = newPortalLoc.position;
             Destroy(this.gameObject);
         }
     }

@@ -104,3 +104,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - soundName: Portal
+    clip: {fileID: 8300000, guid: 7afa32f9ec78a2243a0f5931c5430fe7, type: 3}
+    volume: 0.402
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

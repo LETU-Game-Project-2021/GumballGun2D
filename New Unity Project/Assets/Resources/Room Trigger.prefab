@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3322058642969582601}
   - component: {fileID: 6085138942461497002}
+  - component: {fileID: -3311927695972002272}
   m_Layer: 0
   m_Name: Room Trigger
   m_TagString: Untagged
@@ -57,3 +58,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.669527, y: 2.750967}
   m_EdgeRadius: 0
+--- !u!114 &-3311927695972002272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169652989519096261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517278e30c5ab9947aa65ee1084a31f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nests: []
+  backBarrier: {fileID: 0}
+  spawnerLocations: []
+  nestObject: {fileID: 0}
+  barrierObject: {fileID: 0}
+  waveObject: {fileID: 0}

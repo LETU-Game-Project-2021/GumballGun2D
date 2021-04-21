@@ -34,6 +34,7 @@ public class Portal : MonoBehaviour
             Destroy(collision.gameObject);
             float width = portalHealth / maxHealth * healthBarSize.x;
             healthMeter.rectTransform.sizeDelta = new Vector2(width, healthBarSize.y);
+            FindObjectOfType<SoundManager>().Play("Portal");
         }
     }
 }

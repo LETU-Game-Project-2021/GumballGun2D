@@ -33,7 +33,15 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Theme");
+        int rand = UnityEngine.Random.Range(0,2);
+        switch (rand) {
+            case 0:
+                Play("Theme");
+                break;
+            case 1:
+                Play("Theme2");
+                break;
+        }
     }
 
     public void Play(string name) {
