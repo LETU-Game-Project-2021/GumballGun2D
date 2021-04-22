@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour
         this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         this.gameObject.layer = (11); //Stuck
         this.gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.magenta);
+        this.GetComponentInChildren<ParticleSystem>().Play();
     }
 
     private void Flip()
