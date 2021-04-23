@@ -22,7 +22,7 @@ public class RoomTrigger : MonoBehaviour
             for (int i = 0; i < spawnerLocations.Length; i++) {
                 Instantiate(waveObject, spawnerLocations[i].position, Quaternion.identity);
             }
-            Instantiate(barrierObject, backBarrier, true);
+            Instantiate(barrierObject, backBarrier.transform.position, Quaternion.identity);
             FindObjectOfType<Gamemanager>().roomComplete = false;
             if (collision.GetComponent<Player>().availableDrills != collision.GetComponent<Player>().totalDrills) {
                 collision.GetComponent<Player>().availableDrills = collision.GetComponent<Player>().totalDrills;

@@ -247,10 +247,16 @@ public class Upgrader: MonoBehaviour
             menu.transform.GetChild(0).GetComponent<PowerUp>().select();
         float startTime = Time.time;
         float ratio = 0;
+        if(opening) {
+            player.stunned = true;
+        }
         while(Time.time - startTime < openMenuTime) {
             ratio = (opening ? (Time.time - startTime) / openMenuTime : 1 - (Time.time - startTime) / openMenuTime);
             menu.transform.localScale = new Vector3(ratio, ratio, 1);
             yield return 0;
+        }
+        if(opening) {
+            player.stunned = false;
         }
         menu.transform.localScale = (opening ? new Vector3(1, 1, 1) : new Vector3(0, 0, 1));
         menuIsOpen = opening;
