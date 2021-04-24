@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2743649953415301935}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -18.640785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -46,73 +46,86 @@ MonoBehaviour:
   effects:
   - soundName: fireSound
     clip: {fileID: 8300000, guid: 32bd594c03bdbf74c93a08d55fe1cd0e, type: 3}
+    isSFX: 1
     volume: 0.221
     pitch: 0.75
     loop: 0
     source: {fileID: 0}
   - soundName: Theme
     clip: {fileID: 8300000, guid: dc5ea22c066b9de45be0921a42038e07, type: 3}
+    isSFX: 0
     volume: 0.15
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - soundName: Jump
     clip: {fileID: 8300000, guid: f17ecd03e1e523d4090a63e847e71d64, type: 3}
+    isSFX: 0
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Gumball Machine
     clip: {fileID: 8300000, guid: 873cd75d81a60b64ea0608de35d5fc06, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Drill Start
     clip: {fileID: 8300000, guid: c2c976224b5f7e54bb876aad989468f5, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 0.68
     loop: 0
     source: {fileID: 0}
   - soundName: Drilling
     clip: {fileID: 8300000, guid: 4aa62b7ee634ff34d907ff0d685006d1, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Wave Spawner
     clip: {fileID: 8300000, guid: 53e6d6bb0de45dc4788836119f46f4b1, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Coin Pickup
     clip: {fileID: 8300000, guid: 47adf03bf8d65c74b82ca70e4eb7bc90, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Nest Destroyed
     clip: {fileID: 8300000, guid: eab03ac067de5784a8dae2d1057fd6d9, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Hit
     clip: {fileID: 8300000, guid: ef42e613a8de4124ab6493374b1b1b4c, type: 3}
+    isSFX: 1
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Portal
     clip: {fileID: 8300000, guid: 7afa32f9ec78a2243a0f5931c5430fe7, type: 3}
+    isSFX: 1
     volume: 0.402
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - soundName: Theme2
     clip: {fileID: 8300000, guid: f3f1fbce7479f564cb12b94d5108c9c3, type: 3}
+    isSFX: 0
     volume: 0.402
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  OptionsRENAMETESTMenu: {fileID: 0}
