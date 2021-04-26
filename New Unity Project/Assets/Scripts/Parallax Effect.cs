@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParallaxEffect : MonoBehavior
+public class ParallaxEffect : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float lenght, startpos;
+    private float length, startpos;
     public GameObject cam;
     public float parallaxEffect;
 
