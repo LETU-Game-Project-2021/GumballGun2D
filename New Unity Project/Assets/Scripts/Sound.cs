@@ -6,6 +6,7 @@ public class Sound
 {
     public string soundName;
     public AudioClip clip;
+    public bool isSFX;//music=false
 
     [Range(0f, 1f)]
     public float volume;
