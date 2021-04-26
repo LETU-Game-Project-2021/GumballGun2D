@@ -6,6 +6,8 @@ public class TestInputManager : MonoBehaviour
 {
     Weapon gun;
     Player player;
+    KeyCode[] cheat = new KeyCode[] {KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A, KeyCode.Return};
+    private int index = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +21,21 @@ public class TestInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            Debug.Log("Heavy Hose");
-            gun.applyMod("heavyHose");
+        if(Input.anyKeyDown) {
+            if(Input.GetKeyDown(cheat[index])) {
+                index++;
+            }
+            else {
+                index = 0;
+            }
+            if(index == cheat.Length) {
+                index = 0;
+                gun.applyMod("ultimate");
+                player.jetpack = true;
+                player.availableDrills = player.totalDrills = 3;
+                player.changeCoin(50);
+                SoundManager.instance.Play("Coin Pickup");
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2)) {
-            Debug.Log("+10 coins");
-            player.changeCoin(10);
-        }*/
     }
 }

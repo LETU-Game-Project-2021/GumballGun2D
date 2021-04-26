@@ -105,7 +105,7 @@ public class Upgrader: MonoBehaviour
                 break;
         }
         player.changeCoin(-cost);
-        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position+cam.transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position/*+cam.transform.position*/), Quaternion.identity) as GameObject).GetComponent<Text>();
         msg.text = indicator;
         msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
         StartCoroutine(indicatorFloat(msg));
@@ -138,7 +138,7 @@ public class Upgrader: MonoBehaviour
                 indicator = "Splash";
                 break;
         }
-        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position+cam.transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position/*+cam.transform.position*/), Quaternion.identity) as GameObject).GetComponent<Text>();
         msg.text = indicator;
         msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
         StartCoroutine(enhancementTimer(rand, splashStore/*runSpeed, jamLimit, fireRate, splash*/));
