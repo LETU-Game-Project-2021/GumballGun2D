@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Transform wallCheck;
     [SerializeField] private LayerMask m_WhatIsGround;
 
+    public Animator animator;
     public bool stuck = false;
     public bool fly = false;
     public GameObject target;
@@ -86,6 +87,8 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        animator.SetFloat("Speed", Mathf.Abs(speed));
     }
 
     public void Damage() {

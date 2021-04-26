@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!stunned) {
+
+        if (!stunned) {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             if(Input.GetButtonDown("Jump")) {
                 jump = true;
