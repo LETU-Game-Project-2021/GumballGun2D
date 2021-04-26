@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
     public CharacterController2D controller;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
@@ -56,6 +57,8 @@ public class Player : MonoBehaviour
         if(Input.GetButtonUp("Jump")) {
             particler.Stop();
         }
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     void FixedUpdate()

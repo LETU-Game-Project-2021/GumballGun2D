@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d055c81122c645428ecd3032022b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4434363320720636081}
   controller: {fileID: 4282145018873429065}
   runSpeed: 40
   drill: 0
