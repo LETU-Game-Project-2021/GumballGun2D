@@ -5046,7 +5046,7 @@ GameObject:
   - component: {fileID: 4282145018873429069}
   - component: {fileID: 4282145018873429066}
   - component: {fileID: 4282145018873429071}
-  - component: {fileID: 862395132}
+  - component: {fileID: 1052360118675904020}
   m_Layer: 0
   m_Name: MCPlaceholder
   m_TagString: Player
@@ -5155,7 +5155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d055c81122c645428ecd3032022b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1052360118675904020}
   controller: {fileID: 4282145018873429065}
   runSpeed: 40
   drill: 0
@@ -5235,7 +5235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b592c52ffc9744d9fbb52c9a504142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &862395132
+--- !u!95 &1052360118675904020
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -5245,7 +5245,7 @@ Animator:
   m_GameObject: {fileID: 4282145018873429062}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c6e12a1f79bfb7345bb3ca012615f25d, type: 2}
+  m_Controller: {fileID: 9100000, guid: f5a9d4db9f067704297c4142f284032d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
