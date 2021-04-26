@@ -108,6 +108,7 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  animator: {fileID: 4391989349142147054}
   stuck: 0
   fly: 0
   target: {fileID: 0}
