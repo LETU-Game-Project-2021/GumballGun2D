@@ -79,7 +79,8 @@ public class Nest : MonoBehaviour
     public void startDrill() {
 
         currentDrill = true;
-        FindObjectOfType<WaveSpawner>().SpawnWave();
+        if(!bossNest)
+            FindObjectOfType<WaveSpawner>().SpawnWave();
         timeSinceDrill = 0;//Time.deltaTime;
 
     }
