@@ -20,7 +20,7 @@ public class Upgrader: MonoBehaviour
 
     private Camera cam;
     private Image timerMeter;
-    private Vector2 timerBarSize;
+    private static Vector2 timerBarSize;
     private float indicatorTime = 1.5f;
     private float indicatorRiseSpeed = 10;
     private GameObject hud;
@@ -43,13 +43,14 @@ public class Upgrader: MonoBehaviour
         hud = GameObject.Find("HudCanvas");
         timerMeter = GameObject.Find("UpgradeMeterInner").GetComponent<Image>();
         timerBarSize = timerMeter.rectTransform.sizeDelta;
-        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
+        //timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
         activeImages = new List<TaggedImage>();
         activeImagesOnscreen = new List<Image>();
         if(permanent) {
             menu = GameObject.Find("PowerUp Menu");
         }
         enhanceBreak = true;
+        StartCoroutine(zeroBar());
     }
 
     //select and apply lasting upgrades
@@ -106,7 +107,7 @@ public class Upgrader: MonoBehaviour
         }
         player.changeCoin(-cost);
         //Debug.Log(cam.WorldToScreenPoint(transform.position));
-        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position+cam.transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
         msg.text = indicator;
         msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
         StartCoroutine(indicatorFloat(msg));
@@ -264,6 +265,13 @@ public class Upgrader: MonoBehaviour
         menuIsOpen = opening;
         if(opening)
             Time.timeScale = 0;
+    }
+
+    public IEnumerator zeroBar() {
+        for(int i = 0; i < 5; i++) {
+            yield return 0;
+        }
+        timerMeter.rectTransform.sizeDelta = new Vector2(0, timerBarSize.y);
     }
 }
 
