@@ -6,6 +6,7 @@ public class Nest : MonoBehaviour
 {
     public float spawnRate = 5f;
     public GameObject enemy;
+    public GameObject biggerEnemy;
     public GameObject gameManger;
     public GameObject coin;
     public bool currentDrill = false;
@@ -14,6 +15,7 @@ public class Nest : MonoBehaviour
     private float timeSinceDrill;
     public static float drillTime = 15f;
     public Sprite destroyedNest;
+    public bool bossNest;
 
     private void Start()
     {
@@ -28,10 +30,21 @@ public class Nest : MonoBehaviour
 
         if (!destroyed && lastSpawn > spawnRate)
         {
-
+            
             lastSpawn = 0f;
             spawnRate = Random.Range(4f, 7f);
-            spawnEnemy();
+            if (!bossNest)
+                spawnEnemy();
+            else {
+                switch(Random.Range(0, 2)) {
+                    case 0:
+                        spawnEnemy();
+                         break;
+                    case 1:
+                        spawnBiggerEnemy();
+                        break;
+                }
+            }
 
         }
 
@@ -56,11 +69,18 @@ public class Nest : MonoBehaviour
         Instantiate(enemy, transform.position, Quaternion.identity);
 
     }
+    void spawnBiggerEnemy()
+    {
+        biggerEnemy.GetComponent<Enemy>().target = gameManger.gameObject.GetComponent<Gamemanager>().portalLocation.gameObject;
+        Instantiate(biggerEnemy, transform.position, Quaternion.identity);
+
+    }
 
     public void startDrill() {
 
         currentDrill = true;
-        FindObjectOfType<WaveSpawner>().SpawnWave();
+        if(!bossNest)
+            FindObjectOfType<WaveSpawner>().SpawnWave();
         timeSinceDrill = 0;//Time.deltaTime;
 
     }
