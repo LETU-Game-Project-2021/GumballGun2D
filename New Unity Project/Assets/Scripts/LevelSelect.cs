@@ -6,27 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-	private float oldTime = 1;
+	private float oldTime = 1f;
 	public GameObject select1UI;
-	// public GameObject select2UI;
-	// public GameObject select3UI;
-	// public GameObject select4UI;
-	// public GameObject select5UI;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 	
-	public void select1()
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.tag == "Player")
+		{
+			collision.GetComponent<Player>().canWarp = true;
+			collision.GetComponent<Player>().warpPortal = this.gameObject;
+			//Debug.Log("Hi1");
+		}
+	}
+	
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if(collision.tag == "Player")
+		{
+			collision.GetComponent<Player>().canWarp = false;
+			
+		}
+	}
+
+    public void select1()
 	{
 		oldTime = Time.timeScale;
 		select1UI.SetActive(true);
 		Time.timeScale = 0f;
+		//Debug.Log("Hi");
 	}
 	public void exit1()
 	{
+		oldTime = 1f;
 		select1UI.SetActive(false);
         Time.timeScale = oldTime;
 	}

@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public int coins;
     public bool stunned = false;
     private float stunTime = 2;
+	public GameObject warpPortal;
+	public bool canWarp = false;
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
@@ -96,6 +98,11 @@ public class Player : MonoBehaviour
                 Destroy(currentDrill);
                 drillPickup = false;
             }
+			else if(canWarp)
+			{
+				warpPortal.GetComponent<LevelSelect>().select1();
+				//Debug.Log("Hello1");
+			}
         }
     }
 
