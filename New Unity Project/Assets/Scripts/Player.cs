@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     public Upgrader upgraderTemp;
     public Upgrader upgraderPerm;
     public Text coinCounter;
-    private ParticleSystem particler;
+    private ParticleSystem jetParticler;
+    private ParticleSystem stunParticler;
     public int availableDrills = 1;
     public int totalDrills = 1;
     public int totalJumps = 1;
@@ -35,7 +36,8 @@ public class Player : MonoBehaviour
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
-        particler = transform.GetComponentInChildren<ParticleSystem>();
+        jetParticler = transform.GetComponentsInChildren<ParticleSystem>()[0];
+        stunParticler = transform.GetComponentsInChildren<ParticleSystem>()[1];
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
             horizontalMove = 0;
         }
         if(Input.GetButtonUp("Jump")) {
-            particler.Stop();
+            jetParticler.Stop();
         }
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -66,8 +68,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(fly && jetpack && particler.isStopped) {
-            particler.Play();
+        if(fly && jetpack && jetParticler.isStopped) {
+            jetParticler.Play();
         }
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump, remainingJumps, fly, jetpack);
         jump = false;
@@ -117,10 +119,12 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator isStunned() {
+        stunParticler.Play();
         float startTime = Time.time;
         while(Time.time - startTime < stunTime) {
             yield return 0;
         }
         stunned = false;
+        stunParticler.Stop();
     }
 }
