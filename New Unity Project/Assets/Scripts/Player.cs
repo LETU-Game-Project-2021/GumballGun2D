@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     private float stunTime = 2;
 	public GameObject warpPortal;
 	public bool canWarp = false;
+    public bool inGameWarp = false;
 
     private void Start() {
         coinCounter = GameObject.Find("CoinCount").GetComponent<Text>();
@@ -78,33 +79,41 @@ public class Player : MonoBehaviour
 
     private void playerUse() {
         if(!PauseMenu.GameIsPaused) {
-            if(drill && availableDrills > 0) {
+            if (drill && availableDrills > 0)
+            {
                 Drill drill = (Instantiate(drillObject, nest.transform.position, Quaternion.identity) as GameObject).GetComponent<Drill>();
                 FindObjectOfType<SoundManager>().Play("Drill Start");
                 availableDrills--;
                 nest.gameObject.GetComponent<Nest>().startDrill();
                 StartCoroutine(drill.displayTimer(Nest.drillTime));
             }
-            else if(upgradeP) {
+            else if (upgradeP)
+            {
                 StartCoroutine(upgraderPerm.openBuyMenu(!Upgrader.menuIsOpen));
             }
-            else if(upgradeT && coins >= upgraderTemp.tempUpgradeCost) {
-                if(!upgraderTemp.tempActive) {
+            else if (upgradeT && coins >= upgraderTemp.tempUpgradeCost)
+            {
+                if (!upgraderTemp.tempActive)
+                {
                     upgraderTemp.getTemporaryEnhancement();
                     changeCoin(-upgraderTemp.tempUpgradeCost);
                     FindObjectOfType<SoundManager>().Play("Gumball Machine");
                 }
             }
-            else if(drillPickup) {
+            else if (drillPickup)
+            {
                 availableDrills++;
                 Destroy(currentDrill);
                 drillPickup = false;
             }
-			else if(canWarp)
-			{
-				warpPortal.GetComponent<LevelSelect>().select1();
-				//Debug.Log("Hello1");
-			}
+            else if (canWarp)
+            {
+                warpPortal.GetComponent<LevelSelect>().select1();
+                //Debug.Log("Hello1");
+            }
+            else if (inGameWarp) {
+                warpPortal.GetComponent<endPortal>().Warp();
+            }
         }
     }
 
@@ -120,10 +129,12 @@ public class Player : MonoBehaviour
 
     IEnumerator isStunned() {
         stunParticler.Play();
+        this.gameObject.layer = 13;
         float startTime = Time.time;
         while(Time.time - startTime < stunTime) {
             yield return 0;
         }
+        this.gameObject.layer = 0;
         stunned = false;
         stunParticler.Stop();
     }
