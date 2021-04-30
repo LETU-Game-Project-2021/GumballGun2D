@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 403478610}
   m_Layer: 0
   m_Name: BossNest
-  m_TagString: Untagged
+  m_TagString: StationaryUsable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -29,7 +29,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") {
+        if (collision.gameObject.tag == "Enemy" && !collision.GetComponent<Enemy>().stuck) {
             portalHealth--;
             Destroy(collision.gameObject);
             float width = portalHealth / maxHealth * healthBarSize.x;
