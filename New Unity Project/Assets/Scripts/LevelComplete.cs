@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelComplete : MonoBehaviour
 {
     public GameObject completeLevel;
+
 	
 	private void Start()
 	{
@@ -21,7 +22,7 @@ public class LevelComplete : MonoBehaviour
 	public void NextLevel()
 	{
 		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		SceneManager.LoadScene("HubRoom");
 	}
 	
 }
