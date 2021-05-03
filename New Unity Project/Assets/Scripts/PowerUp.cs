@@ -11,12 +11,14 @@ public class PowerUp : MonoBehaviour
     public int cost;
     public string description;
     public string keyword;
-    public Upgrader upgrader;
+    private Player player;
+    private Upgrader upgrader;
     public static bool waiting = false;
     private Text descriptionBox;
     public Button buyBtn;
 
     private void Start() {
+        player = GameObject.FindObjectOfType<Player>();
         this.GetComponentInParent<Image>().sprite = menuImg;
         descriptionBox = GameObject.Find("PowerUpDescription").GetComponent<Text>();
         buyBtn = GameObject.Find("PowerUpBuyBtn").GetComponent<Button>();
@@ -43,6 +45,7 @@ public class PowerUp : MonoBehaviour
         while(waiting) {
             yield return 0;
         }
+        upgrader = player.upgraderPerm;
         upgrader.getPermanentEnhancement(keyword, cost);
         Upgrader.enhanceBreak = true;
         StartCoroutine(upgrader.openBuyMenu(false));

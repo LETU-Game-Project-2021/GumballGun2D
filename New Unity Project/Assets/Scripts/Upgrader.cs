@@ -107,7 +107,7 @@ public class Upgrader: MonoBehaviour
         }
         player.changeCoin(-cost);
         //Debug.Log(cam.WorldToScreenPoint(transform.position));
-        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position+cam.transform.position), Quaternion.identity) as GameObject).GetComponent<Text>();
+        Text msg = (Instantiate(Resources.Load("Upgrade Indicator Text"), cam.WorldToScreenPoint(transform.position/*+cam.transform.position*/), Quaternion.identity) as GameObject).GetComponent<Text>();
         msg.text = indicator;
         msg.transform.SetParent(GameObject.Find("HudCanvas").transform);
         StartCoroutine(indicatorFloat(msg));

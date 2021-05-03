@@ -7732,7 +7732,7 @@ PrefabInstance:
     - target: {fileID: 6518007167433222101, guid: 3aa19464a4c0a4c43b477b74e72a4c66,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.740002
+      value: -30.74
       objectReference: {fileID: 0}
     - target: {fileID: 6518007167433222101, guid: 3aa19464a4c0a4c43b477b74e72a4c66,
         type: 3}
@@ -12841,38 +12841,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5623862239529913637, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
-      propertyPath: menuImg
-      value: 
-      objectReference: {fileID: 21300000, guid: 9879acac25a302946bfa17d59bb7145d,
-        type: 3}
-    - target: {fileID: 5623862239529913637, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: upgrader
-      value: 
-      objectReference: {fileID: 1862664048}
-    - target: {fileID: 5623862239529913637, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: activeImg
-      value: 
-      objectReference: {fileID: 21300000, guid: 9879acac25a302946bfa17d59bb7145d,
-        type: 3}
-    - target: {fileID: 5623862239604819853, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: menuImg
-      value: 
-      objectReference: {fileID: 21300000, guid: b35daf824ca4a9b41927274336c3de3a,
-        type: 3}
-    - target: {fileID: 5623862239604819853, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
       propertyPath: upgrader
       value: 
       objectReference: {fileID: 1862664048}
     - target: {fileID: 5623862239604819853, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
-      propertyPath: activeImg
+      propertyPath: upgrader
       value: 
-      objectReference: {fileID: 21300000, guid: b35daf824ca4a9b41927274336c3de3a,
-        type: 3}
+      objectReference: {fileID: 1862664048}
     - target: {fileID: 5623862239634744109, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
       propertyPath: upgrader
@@ -12880,21 +12856,9 @@ PrefabInstance:
       objectReference: {fileID: 1862664048}
     - target: {fileID: 5623862239705432655, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
-      propertyPath: menuImg
-      value: 
-      objectReference: {fileID: 21300000, guid: b61f851dccdb69f46b48e21ff7d49d86,
-        type: 3}
-    - target: {fileID: 5623862239705432655, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
       propertyPath: upgrader
       value: 
       objectReference: {fileID: 1862664048}
-    - target: {fileID: 5623862239705432655, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: activeImg
-      value: 
-      objectReference: {fileID: 21300000, guid: b61f851dccdb69f46b48e21ff7d49d86,
-        type: 3}
     - target: {fileID: 5623862239756810625, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
       propertyPath: upgrader
@@ -12944,16 +12908,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 109
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623862240095481212, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623862240095481212, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5623862240095481212, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
@@ -13022,21 +12976,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5623862240285582060, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
-      propertyPath: menuImg
-      value: 
-      objectReference: {fileID: 21300000, guid: 3dab6b36622518e42b0d71a035958803,
-        type: 3}
-    - target: {fileID: 5623862240285582060, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
       propertyPath: upgrader
       value: 
       objectReference: {fileID: 1862664048}
-    - target: {fileID: 5623862240285582060, guid: 63fcf73f401803047b93fc3aea84eea2,
-        type: 3}
-      propertyPath: activeImg
-      value: 
-      objectReference: {fileID: 21300000, guid: 3dab6b36622518e42b0d71a035958803,
-        type: 3}
     - target: {fileID: 5623862240610636644, guid: 63fcf73f401803047b93fc3aea84eea2,
         type: 3}
       propertyPath: upgrader

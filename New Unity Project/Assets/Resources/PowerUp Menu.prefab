@@ -220,14 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc453096aa4cd45a5d332ac6c4331a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuImg: {fileID: 0}
-  activeImg: {fileID: 0}
+  menuImg: {fileID: 21300000, guid: 9879acac25a302946bfa17d59bb7145d, type: 3}
+  activeImg: {fileID: 21300000, guid: 9879acac25a302946bfa17d59bb7145d, type: 3}
   textbox: {fileID: 5623862240772864529}
   cost: 7
   description: Allows you to fly through the sky (hold jump key)
   keyword: jetpack
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862239604819855
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,14 +369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc453096aa4cd45a5d332ac6c4331a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuImg: {fileID: 0}
-  activeImg: {fileID: 0}
+  menuImg: {fileID: 21300000, guid: b35daf824ca4a9b41927274336c3de3a, type: 3}
+  activeImg: {fileID: 21300000, guid: b35daf824ca4a9b41927274336c3de3a, type: 3}
   textbox: {fileID: 5623862241161535957}
   cost: 2
   description: Increases the number of gumballs in "spray" and "burst" modes
   keyword: shotCount
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862239634744111
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,8 +524,7 @@ MonoBehaviour:
   cost: 9
   description: Spray a cluster of gumballs with each shot
   keyword: spray
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862239663113704
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,14 +745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc453096aa4cd45a5d332ac6c4331a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuImg: {fileID: 0}
-  activeImg: {fileID: 0}
+  menuImg: {fileID: 21300000, guid: b61f851dccdb69f46b48e21ff7d49d86, type: 3}
+  activeImg: {fileID: 21300000, guid: b61f851dccdb69f46b48e21ff7d49d86, type: 3}
   textbox: {fileID: 5623862239663113710}
   cost: 3
   description: Decreases the time required to drill a nest
   keyword: drillSpeedUp
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862239715986678
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,8 +978,7 @@ MonoBehaviour:
   cost: 6
   description: Allows an additional drill to be placed down
   keyword: extraDrill
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862240058741364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,14 +1369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc453096aa4cd45a5d332ac6c4331a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuImg: {fileID: 0}
-  activeImg: {fileID: 0}
+  menuImg: {fileID: 21300000, guid: 3dab6b36622518e42b0d71a035958803, type: 3}
+  activeImg: {fileID: 21300000, guid: 3dab6b36622518e42b0d71a035958803, type: 3}
   textbox: {fileID: 5623862241247991385}
   cost: 9
   description: Rapidly fire multiple gumballs with each shot
   keyword: burst
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862240610636646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,8 +1524,7 @@ MonoBehaviour:
   cost: 5
   description: Allows you to perform an additional jump mid-air
   keyword: doubleJump
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862240652742767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,8 +1673,7 @@ MonoBehaviour:
   cost: 12
   description: Fire a continuous stream of gumballs (click and hold)
   keyword: automatic
-  upgrader: {fileID: 0}
-  buyBtn: {fileID: 0}
+  buyBtn: {fileID: 5623862240989022420}
 --- !u!1 &5623862240772864531
 GameObject:
   m_ObjectHideFlags: 0
