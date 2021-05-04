@@ -20,7 +20,7 @@ public class RoomTrigger : MonoBehaviour
                 Instantiate(nestObject, new Vector3(nests[i].position.x, nests[i].position.y, 0), Quaternion.identity);
             }
             for (int i = 0; i < spawnerLocations.Length; i++) {
-                Instantiate(waveObject, new Vector3(nests[i].position.x, nests[i].position.y, 0), Quaternion.identity);
+                Instantiate(waveObject, new Vector3(spawnerLocations[i].position.x, spawnerLocations[i].position.y, 0), Quaternion.identity);
             }
             Instantiate(barrierObject, backBarrier.transform.position, Quaternion.identity);
             FindObjectOfType<Gamemanager>().roomComplete = false;

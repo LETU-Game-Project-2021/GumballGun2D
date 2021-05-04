@@ -8,8 +8,11 @@ public class LevelSelect : MonoBehaviour
 {
 	private float oldTime = 1f;
 	public GameObject select1UI;
-	
-	private void OnTriggerEnter2D(Collider2D collision)
+
+    private void Start() {
+        StartCoroutine(setDestination());
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if(collision.tag == "Player")
 		{
@@ -48,6 +51,15 @@ public class LevelSelect : MonoBehaviour
 		Time.timeScale = 1f;
 		SceneManager.LoadScene("Level 1");
 	}
-	
-	
+
+    IEnumerator setDestination() {
+        for(int i = 0; i < 1; i++) {
+            yield return 0;
+        }
+        for(int i = 0; i < GameObject.FindObjectsOfType<LevelSelect>().Length; i++) {
+            if(GameObject.FindObjectsOfType<LevelSelect>()[i] == this) {
+                Debug.Log("My id is " + i);
+            }
+        }
+    }
 }
