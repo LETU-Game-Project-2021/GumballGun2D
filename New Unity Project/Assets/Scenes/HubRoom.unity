@@ -2381,7 +2381,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 2800000, guid: d9f30243d326458459fa4a4417e976e7, type: 3}
+    m_Texture: {fileID: 2800000, guid: e6203e6a641135749bb07f5363e44927, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -7043,7 +7043,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1771415407}
+      - m_Target: {fileID: 1600901494}
         m_MethodName: goToLevel1
         m_Mode: 1
         m_Arguments:
@@ -17128,7 +17128,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter World 1?
+  m_Text: Enter World 3?
 --- !u!222 &1752988152
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22881,7 +22881,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 2800000, guid: d9f30243d326458459fa4a4417e976e7, type: 3}
+    m_Texture: {fileID: 2800000, guid: 87df250c23c9f15439ec4e349222966e, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -26929,7 +26929,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1619234385}
+      - m_Target: {fileID: 1336969557}
         m_MethodName: goToLevel1
         m_Mode: 1
         m_Arguments:
@@ -27148,7 +27148,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 45150251}
+      - m_Target: {fileID: 1091686113}
         m_MethodName: goToLevel1
         m_Mode: 1
         m_Arguments:

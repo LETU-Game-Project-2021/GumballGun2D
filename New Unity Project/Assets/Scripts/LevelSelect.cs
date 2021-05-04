@@ -52,11 +52,11 @@ public class LevelSelect : MonoBehaviour
 		Time.timeScale = 1f;
 		switch(roomID)
 		{
-			case 0: SceneManager.LoadScene(2);
+			case 0: SceneManager.LoadScene(4);
 				break;
 			case 1: SceneManager.LoadScene(3);
 				break;
-			case 2: SceneManager.LoadScene(4);
+			case 2: SceneManager.LoadScene(2);
 				break;
 		}
 		// SceneManager.LoadScene("Level 1");
@@ -68,6 +68,7 @@ public class LevelSelect : MonoBehaviour
         }
         for(int i = 0; i < GameObject.FindObjectsOfType<LevelSelect>().Length; i++) {
             if(GameObject.FindObjectsOfType<LevelSelect>()[i] == this) {
+                Debug.Log("My id is " + i + ", I am " + transform.name);
                 roomID = i;
             }
         }
