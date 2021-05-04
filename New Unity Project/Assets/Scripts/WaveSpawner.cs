@@ -53,6 +53,9 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private void SpawnWaveEnemy() {
+        if (gameManager.roomNumber == 3) {
+            return;
+        }
         int rand = Random.Range(0, 1);
         enemy[rand].GetComponent<Enemy>().target = gameManager.gameObject.GetComponent<Gamemanager>().portalLocation.gameObject;
         Instantiate(enemy[rand], transform.position, Quaternion.identity);
