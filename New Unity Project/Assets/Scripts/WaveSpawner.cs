@@ -53,7 +53,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private void SpawnWaveEnemy() {
-        if (gameManager.roomNumber == 3) {
+        if (gameManager.roomNumber > 2) {
             return;
         }
         int rand = Random.Range(0, 1);
